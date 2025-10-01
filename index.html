@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tajen Belabn - Online Menu</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+    <link rel="icon" type="image/png" href="images/banner/avater.png">
+</head>
+<body>
+
+    <div id="loading" class="fixed inset-0 bg-gray-900 bg-opacity-90 flex flex-col justify-center items-center z-[100]">
+        <svg class="animate-spin h-12 w-12 text-[#6dd9f3] mx-auto" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>
+        <p class="mt-4 text-lg">جاري تحميل المنيو...</p>
+    </div>
+
+    <header style="background-color: var(--header-bg);" class="fixed top-0 w-full z-50 transition-transform duration-300 pt-4 pb-2">
+        <div class="container mx-auto max-w-md">
+            <div class="w-full flex justify-between items-center px-4">
+                <div>
+                    <img src="images/banner/avater.png" alt="شعار المحل" class="h-12 md:h-16">
+                </div>
+                
+                <div class="flex items-center gap-3">
+                    <button id="page-toggle-btn" class="flex items-center gap-2 bg-[#0074d9] px-3 py-1.5 rounded-lg font-bold text-base whitespace-nowrap">
+                        <span>🛒</span>
+                        <span>السلة (<span id="cart-count">0</span>)</span>
+                    </button>
+    
+                    <div class="relative" id="dropdown-container">
+                        <button id="dropdown-btn" class="flex items-center gap-2 bg-[#0074d9] px-3 py-1.5 rounded-lg font-bold text-base whitespace-nowrap">
+                            <span>الأصناف</span>
+                            <svg class="w-5 h-5 transition-transform duration-300" id="dropdown-arrow" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" /></svg>
+                        </button>
+                        <div id="dropdown-menu" class="hidden absolute left-0 mt-2 w-48 rounded-md shadow-lg py-1 z-20" style="background-color: var(--dropdown-bg); border: 1px solid var(--border-color);"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header> 
+    
+    <main class="container mx-auto max-w-4xl p-4 pt-32 md:pt-40">
+        <div id="menu-container" class="w-full space-y-12"></div>
+        
+        <div id="cart-page" class="hidden w-full space-y-6">
+            <h2 class="text-3xl font-extrabold text-[#00a2fa] mb-6 border-b-2 border-[#0074d9]/50 pb-3">سلة الطلبات</h2>
+            <div id="cart-items-container" class="space-y-4"></div>
+            <div id="cart-summary" class="mt-8 p-4 rounded-lg" style="background-color: rgba(0,0,0,0.2);">
+                <div class="flex justify-between items-center text-2xl font-bold text-white">
+                    <span>الإجمالي:</span>
+                    <span id="total-price">0.00 ج.م</span>
+                </div>
+                
+                <p class="text-xs text-gray-400 mt-1 text-right">السعر غير شامل التوصيل</p>
+                
+                <div class="mt-6">
+                    <label for="branch-select" class="block mb-2 font-bold text-white">اختر الفرع للطلب:</label>
+                    <select id="branch-select" class="w-full p-2 rounded bg-gray-700 text-white border border-gray-600">
+                        <option value="abokbeer">ابوكبير</option>
+                        <option value="hehya">ههيا</option>
+                        <option value="zagazig">الزقازيق</option>
+                        <option value="faqous">فاقوس</option>
+                        <option value="kafrsaqr">كفرصقر</option>
+                    </select>
+                </div>
+                <a id="call-now-btn" href="#" class="call-btn mt-6 block w-full text-center text-white font-bold py-3 px-4 rounded-lg text-xl">
+                    📞 اتصل الآن للطلب
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="text-center py-6 mt-12 border-t border-gray-700">
+        <p class="text-gray-400 text-sm">
+            Made with ❤️ by 
+            <a href="https://hmody-site.netlify.app/" target="_blank" rel="noopener noreferrer" class="creator-name">Hmody Code</a>
+        </p>
+        <p class="text-gray-500 text-xs mt-1">
+            &copy; <span id="copyright-year"></span> .Tajen Belabn. All Rights Reserved
+        </p>
+    </footer>
+
+    <script type="module" src="script.js"></script>
+</body>
+</html>
