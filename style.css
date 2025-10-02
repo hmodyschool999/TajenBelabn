@@ -28,8 +28,8 @@ main { flex-grow: 1; }
 #dropdown-btn.active #dropdown-arrow { transform: rotate(180deg); }
 .item-card {
     background-image: var(--banner-normal);
-    background-size: cover;
-    background-position: center;
+    background-size: 110% auto;
+    background-position: 45% center;
     background-repeat: no-repeat;
     border: 2px solid transparent;
     transition: all 0.4s ease-in-out;
@@ -112,13 +112,12 @@ main { flex-grow: 1; }
     color: white;
     border-color: #00a2fa;
 }
-.item-card h3 {
-    font-size: 1.125rem; /* هذا يعادل text-lg في Tailwind - أصغر من الحجم الحالي */
-    line-height: 1.75rem; /* لتناسق المسافات */
-    transition: font-size 0.3s ease-in-out; /* لجعل التغيير في الحجم ناعمًا */
+/* .item-card h3 {
+    font-size: 0.8rem; 
+    border-block: 700;
+    line-height: 5.7rem; 
+    transition: font-size 0.4s ease-in-out;
 }
-
-/* حالة التوسيع (الكارت مفتوح) - النص يرجع لحجمه الأصلي */
 .item-card.expanded h3 {
-    font-size: 1.25rem; /* هذا يعادل text-xl في Tailwind - الحجم الأصلي الكبير */
-}
+    font-size: medium; 
+} */

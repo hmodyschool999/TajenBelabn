@@ -5,6 +5,35 @@ const IMAGE_BASE_PATH = './images';
 const categoryTranslations = { waffle: 'الوافل', omAli: 'أم علي', dessert: 'الركن الشرقي', milkshake: 'ميلك شيك', juice: 'عصائر', fruit_salad: 'فروت سلات', hot_drink: 'مشروبات ساخنة', extras: 'إضافات', ice_cream: 'آيس كريم', bamboza: 'بمبوظة', gelaktico: 'جلاكتيكوس', tajen: 'طواجن', qashtouta: 'قشطوطة', koshary: 'كشري الحلو', innovations: 'اختراعات', rice: 'أرز باللبن' };
 const branchPhoneNumbers = { abokbeer: 'tel:01068702062', hehya: 'tel:01011350653', zagazig: 'tel:01080076320', faqous: 'tel:01068020434', kafrsaqr: 'tel:01068701310' };
 
+/**
+ * A helper function to format long names by adding a line break.
+ * @param {string} name - The item name to format.
+ * @param {number} maxLength - The character count threshold.
+ * @returns {string} - The formatted name with a <br> tag if needed.
+ */
+function formatNameWithLineBreak(name, maxLength) {
+    // إذا كان الاسم قصيرًا بالفعل، قم بإرجاعه كما هو دون تغيير
+    if (name.length <= maxLength) {
+        return name;
+    }
+
+    // ابحث عن أول مسافة ' ' بعد تجاوز عدد الحروف المحدد
+    const breakPointIndex = name.indexOf(' ', maxLength);
+
+    // إذا لم يجد مسافة بعد الحد (يعني أنها كلمة واحدة طويلة جدًا)،
+    // قم بإرجاع الاسم الأصلي لتجنب كسر الكلمة
+    if (breakPointIndex === -1) {
+        return name;
+    }
+
+    // قم بقص الاسم إلى جزأين عند المسافة التي وجدناها
+    const part1 = name.substring(0, breakPointIndex);
+    const part2 = name.substring(breakPointIndex + 1);
+
+    // أرجع الجزأين وبينهما وسم <br> لينزل السطر
+    return `${part1}<br>${part2}`;
+}
+
 let cart = [];
 const loadingScreen = document.getElementById('loading');
 const dropdownBtn = document.getElementById('dropdown-btn');
@@ -118,7 +147,11 @@ function createItemCard(item, category) {
 
     const summaryText = document.createElement('div');
     summaryText.className = 'flex-grow flex flex-col justify-center';
-    summaryText.innerHTML = `<h3 class="text-xl font-bold text-white">${item.name}</h3>`;
+    // قم بتنسيق الاسم باستخدام الدالة الجديدة، مع تحديد 18 حرفًا كحد أقصى
+    const formattedName = formatNameWithLineBreak(item.name, 6);
+
+    // استخدم الاسم المنسق الجديد في الـ HTML
+    summaryText.innerHTML = `<h3 class="text-xl font-bold text-white">${formattedName}</h3>`;
     
     summary.appendChild(summaryImgContainer);
     summary.appendChild(summaryText);
@@ -190,16 +223,55 @@ function createItemCard(item, category) {
     }
 
     summary.onclick = () => {
-        const isCurrentlyExpanded = card.classList.contains('expanded');
-        document.querySelectorAll(".item-card.expanded").forEach(c => {
-            if (c !== card) c.classList.remove('expanded');
-        });
-        card.classList.toggle('expanded', !isCurrentlyExpanded);
-        if (isCurrentlyExpanded && hasTwoPrices) {
-            actionsContainer.querySelector('.quantity-controls').classList.add('hidden');
-            actionsContainer.querySelectorAll('.price-btn').forEach(b => {
-                b.classList.remove('selected', 'hidden');
+        const isMobile = window.innerWidth < 768; // نحدد نقطة الفصل بين الموبايل والديسكتوب
+
+        // --- منطق الموبايل (نفس السلوك القديم) ---
+        if (isMobile) {
+            const isCurrentlyExpanded = card.classList.contains('expanded');
+            // اغلق كل البطاقات الأخرى
+            document.querySelectorAll(".item-card.expanded").forEach(c => {
+                if (c !== card) c.classList.remove('expanded');
             });
+            // افتح او اغلق البطاقة الحالية فقط
+            card.classList.toggle('expanded', !isCurrentlyExpanded);
+        
+        // --- منطق الديسكتوب (السلوك الجديد) ---
+        } else {
+            const allCardsInGrid = Array.from(card.parentElement.children);
+            const currentIndex = allCardsInGrid.indexOf(card);
+            let pairCard = null;
+
+            // ابحث عن البطاقة المجاورة (الزوج)
+            if (currentIndex % 2 === 0) { // إذا كان العنصر الأول في الزوج (index زوجي)
+                pairCard = allCardsInGrid[currentIndex + 1];
+            } else { // إذا كان العنصر الثاني في الزوج (index فردي)
+                pairCard = allCardsInGrid[currentIndex - 1];
+            }
+
+            const isCurrentlyExpanded = card.classList.contains('expanded');
+
+            // اغلق كل البطاقات التي ليست الحالية او زوجها
+            document.querySelectorAll(".item-card.expanded").forEach(c => {
+                if (c !== card && c !== pairCard) {
+                    c.classList.remove('expanded');
+                }
+            });
+            
+            // افتح او اغلق البطاقة الحالية وزوجها معًا
+            card.classList.toggle('expanded', !isCurrentlyExpanded);
+            if (pairCard) {
+                pairCard.classList.toggle('expanded', !isCurrentlyExpanded);
+            }
+        }
+
+        // --- هذا الجزء الخاص بإعادة تعيين أزرار السعر يبقى كما هو ---
+        // سيتم تطبيقه فقط على البطاقة التي تم النقر عليها مباشرة عند إغلاقها
+        const isCurrentlyExpanded = card.classList.contains('expanded');
+        if (!isCurrentlyExpanded && hasTwoPrices) {
+             actionsContainer.querySelector('.quantity-controls').classList.add('hidden');
+             actionsContainer.querySelectorAll('.price-btn').forEach(b => {
+                 b.classList.remove('selected', 'hidden');
+             });
         }
     };
 
