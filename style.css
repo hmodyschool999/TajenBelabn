@@ -36,6 +36,7 @@ main { flex-grow: 1; }
 }
 .item-card.expanded {
     background-image: var(--banner-expanded);
+    background-size: auto;
     border-color: #6dd9f3;
     transform: scale(1.02);
     grid-column: 1 / -1; 
@@ -120,4 +121,5 @@ main { flex-grow: 1; }
 }
 .item-card.expanded h3 {
     font-size: medium; 
+
 } */
