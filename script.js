@@ -1,36 +1,19 @@
 import { menu, menu_database_db } from './menu.js';
 
-// --- START: الإعدادات والمتغيرات الأساسية ---
 const IMAGE_BASE_PATH = './images';
 const categoryTranslations = { waffle: 'الوافل', omAli: 'أم علي', dessert: 'الركن الشرقي', milkshake: 'ميلك شيك', juice: 'عصائر', fruit_salad: 'فروت سلات', hot_drink: 'مشروبات ساخنة', extras: 'إضافات', ice_cream: 'آيس كريم', bamboza: 'بمبوظة', gelaktico: 'جلاكتيكوس', tajen: 'طواجن', qashtouta: 'قشطوطة', koshary: 'كشري الحلو', innovations: 'اختراعات', rice: 'أرز باللبن' };
 const branchPhoneNumbers = { abokbeer: 'tel:01068702062', hehya: 'tel:01011350653', zagazig: 'tel:01080076320', faqous: 'tel:01068020434', kafrsaqr: 'tel:01068701310' };
 
-/**
- * A helper function to format long names by adding a line break.
- * @param {string} name - The item name to format.
- * @param {number} maxLength - The character count threshold.
- * @returns {string} - The formatted name with a <br> tag if needed.
- */
 function formatNameWithLineBreak(name, maxLength) {
-    // إذا كان الاسم قصيرًا بالفعل، قم بإرجاعه كما هو دون تغيير
     if (name.length <= maxLength) {
         return name;
     }
-
-    // ابحث عن أول مسافة ' ' بعد تجاوز عدد الحروف المحدد
     const breakPointIndex = name.indexOf(' ', maxLength);
-
-    // إذا لم يجد مسافة بعد الحد (يعني أنها كلمة واحدة طويلة جدًا)،
-    // قم بإرجاع الاسم الأصلي لتجنب كسر الكلمة
     if (breakPointIndex === -1) {
         return name;
     }
-
-    // قم بقص الاسم إلى جزأين عند المسافة التي وجدناها
     const part1 = name.substring(0, breakPointIndex);
     const part2 = name.substring(breakPointIndex + 1);
-
-    // أرجع الجزأين وبينهما وسم <br> لينزل السطر
     return `${part1}<br>${part2}`;
 }
 
@@ -45,9 +28,7 @@ const cartItemsContainer = document.getElementById('cart-items-container');
 const totalPriceSpan = document.getElementById('total-price');
 const branchSelect = document.getElementById('branch-select');
 const callNowBtn = document.getElementById('call-now-btn');
-// --- END: الإعدادات والمتغيرات الأساسية ---
 
-// --- الدالة الرئيسية لتشغيل التطبيق ---
 function loadAndProcessMenu() {
     try {
         const categoriesInOrder = menu_database_db.sort((a, b) => a.seq - b.seq).map(cat => cat.name).filter(name => menu[name] && menu[name].length > 0);
@@ -119,22 +100,19 @@ function createItemCard(item, category) {
     card.style.setProperty("--banner-normal", `url('${IMAGE_BASE_PATH}/banner/normal.png')`);
     card.style.setProperty("--banner-expanded", `url('${IMAGE_BASE_PATH}/banner/expend.png')`);
 
-    // --- Function to handle image errors ---
     const handleImageError = function() {
-        this.onerror = null; // Prevent infinite error loops
+        this.onerror = null;
         const noPicDiv = document.createElement('div');
         noPicDiv.className = "w-full h-full rounded-md bg-gray-700 flex items-center justify-center text-gray-400 text-xs";
         noPicDiv.textContent = 'No Pic';
-        // Check if the image has a parent to replace it in
         if (this.parentElement) {
             this.parentElement.replaceChild(noPicDiv, this);
         }
     };
 
-    // --- Summary Section (Visible Initially) ---
     const summary = document.createElement("div");
     summary.className = "p-4 cursor-pointer flex items-center space-x-4 space-x-reverse";
-    
+
     const summaryImgContainer = document.createElement('div');
     summaryImgContainer.className = 'relative w-20 h-20 flex-shrink-0';
     const summaryImg = document.createElement('img');
@@ -142,22 +120,17 @@ function createItemCard(item, category) {
     summaryImg.alt = item.name;
     summaryImg.className = "w-20 h-20 rounded-md object-cover border-2 border-gray-600";
     summaryImg.loading = 'lazy';
-    summaryImg.onerror = handleImageError; // Assign the error handler function
+    summaryImg.onerror = handleImageError;
     summaryImgContainer.appendChild(summaryImg);
 
     const summaryText = document.createElement('div');
     summaryText.className = 'flex-grow flex flex-col justify-center';
-    // قم بتنسيق الاسم باستخدام الدالة الجديدة، مع تحديد 18 حرفًا كحد أقصى
     const formattedName = formatNameWithLineBreak(item.name, 6);
-
-    // استخدم الاسم المنسق الجديد في الـ HTML
     summaryText.innerHTML = `<h3 class="text-xl font-bold text-white">${formattedName}</h3>`;
-    
+
     summary.appendChild(summaryImgContainer);
     summary.appendChild(summaryText);
 
-
-    // --- Details Section (Hidden Initially) ---
     const details = document.createElement("div");
     details.className = "item-details px-4 pb-4 space-y-4";
 
@@ -167,14 +140,14 @@ function createItemCard(item, category) {
     detailsImg.alt = item.name;
     detailsImg.className = "w-full aspect-square object-cover rounded-lg border-2 border-gray-600";
     detailsImg.loading = 'lazy';
-    detailsImg.onerror = handleImageError; // Assign the same error handler function
+    detailsImg.onerror = handleImageError;
     detailsImgContainer.appendChild(detailsImg);
     details.appendChild(detailsImgContainer);
-    
+
     if (item.description) {
         details.innerHTML += `<p class="text-white"><strong class="text-[#6dd9f3]">المكونات:</strong> ${item.description}</p>`;
     }
-    
+
     details.innerHTML += `
         <div class="price-container flex justify-between items-center"></div>
         <div class="actions-container mt-4"></div>
@@ -183,7 +156,6 @@ function createItemCard(item, category) {
     card.appendChild(summary);
     card.appendChild(details);
 
-    // The rest of your function logic remains the same
     const priceContainer = details.querySelector('.price-container');
     const actionsContainer = details.querySelector('.actions-container');
     const hasTwoPrices = item.price2 !== undefined && item.price2 !== null;
@@ -223,55 +195,39 @@ function createItemCard(item, category) {
     }
 
     summary.onclick = () => {
-        const isMobile = window.innerWidth < 768; // نحدد نقطة الفصل بين الموبايل والديسكتوب
-
-        // --- منطق الموبايل (نفس السلوك القديم) ---
+        const isMobile = window.innerWidth < 768;
         if (isMobile) {
             const isCurrentlyExpanded = card.classList.contains('expanded');
-            // اغلق كل البطاقات الأخرى
             document.querySelectorAll(".item-card.expanded").forEach(c => {
                 if (c !== card) c.classList.remove('expanded');
             });
-            // افتح او اغلق البطاقة الحالية فقط
             card.classList.toggle('expanded', !isCurrentlyExpanded);
-        
-        // --- منطق الديسكتوب (السلوك الجديد) ---
         } else {
             const allCardsInGrid = Array.from(card.parentElement.children);
             const currentIndex = allCardsInGrid.indexOf(card);
             let pairCard = null;
-
-            // ابحث عن البطاقة المجاورة (الزوج)
-            if (currentIndex % 2 === 0) { // إذا كان العنصر الأول في الزوج (index زوجي)
+            if (currentIndex % 2 === 0) {
                 pairCard = allCardsInGrid[currentIndex + 1];
-            } else { // إذا كان العنصر الثاني في الزوج (index فردي)
+            } else {
                 pairCard = allCardsInGrid[currentIndex - 1];
             }
-
             const isCurrentlyExpanded = card.classList.contains('expanded');
-
-            // اغلق كل البطاقات التي ليست الحالية او زوجها
             document.querySelectorAll(".item-card.expanded").forEach(c => {
                 if (c !== card && c !== pairCard) {
                     c.classList.remove('expanded');
                 }
             });
-            
-            // افتح او اغلق البطاقة الحالية وزوجها معًا
             card.classList.toggle('expanded', !isCurrentlyExpanded);
             if (pairCard) {
                 pairCard.classList.toggle('expanded', !isCurrentlyExpanded);
             }
         }
-
-        // --- هذا الجزء الخاص بإعادة تعيين أزرار السعر يبقى كما هو ---
-        // سيتم تطبيقه فقط على البطاقة التي تم النقر عليها مباشرة عند إغلاقها
         const isCurrentlyExpanded = card.classList.contains('expanded');
         if (!isCurrentlyExpanded && hasTwoPrices) {
-             actionsContainer.querySelector('.quantity-controls').classList.add('hidden');
-             actionsContainer.querySelectorAll('.price-btn').forEach(b => {
-                 b.classList.remove('selected', 'hidden');
-             });
+            actionsContainer.querySelector('.quantity-controls').classList.add('hidden');
+            actionsContainer.querySelectorAll('.price-btn').forEach(b => {
+                b.classList.remove('selected', 'hidden');
+            });
         }
     };
 
@@ -300,7 +256,6 @@ function createItemCard(item, category) {
     return card;
 }
 
-// --- START: دوال سلة التسوق ---
 function saveCart() { localStorage.setItem("tajenCart", JSON.stringify({ data: cart })) }
 function loadCart() { const savedCart = localStorage.getItem("tajenCart"); if (savedCart) { cart = JSON.parse(savedCart).data || [] } updateCartDisplay() }
 
@@ -308,9 +263,7 @@ function addToCart(item, category, quantity, options, button) {
     const selectedPrice = options ? options.price : item.price;
     const size = options ? options.size : null;
     const cartItemId = `${item.id}_${category}_${selectedPrice}`;
-
     const existingItem = cart.find(i => i.cartItemId === cartItemId);
-
     if (existingItem) {
         existingItem.quantity += quantity;
     } else {
@@ -350,19 +303,15 @@ function updateCartDisplay() {
     const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
     const cartCountElem = pageToggleButton.querySelector("#cart-count");
     if (cartCountElem) cartCountElem.textContent = totalItems;
-
     cartItemsContainer.innerHTML = cart.length === 0 ? '<p class="text-center text-gray-400">سلة الطلبات فارغة حاليًا.</p>' : "";
     let total = 0;
     cart.forEach(item => {
         const cartItemElem = document.createElement("div");
         cartItemElem.className = "cart-item flex items-center justify-between p-3 rounded-lg";
-
         const price = parseFloat(item.price);
         const itemTotal = price * item.quantity;
         total += itemTotal;
-
         const displayName = item.size ? `${item.name} (${item.size})` : item.name;
-
         cartItemElem.innerHTML = `
 <div class="flex items-center gap-3">
 <img src="${item.full_image_path}" class="w-16 h-16 rounded-md object-cover">
@@ -386,7 +335,6 @@ function updateCartDisplay() {
     });
     totalPriceSpan.textContent = `${total.toFixed(2)} ج.م`;
 }
-// --- END: دوال سلة التسوق ---
 
 function togglePageView() {
     const isMenuVisible = !menuContainer.classList.contains("hidden");
@@ -399,7 +347,6 @@ function togglePageView() {
 }
 function updateCallButton() { callNowBtn.href = branchPhoneNumbers[branchSelect.value] || "#"; }
 
-// --- START: ربط الأحداث وتشغيل التطبيق ---
 document.addEventListener('DOMContentLoaded', () => {
     loadCart();
     loadAndProcessMenu();
@@ -421,4 +368,3 @@ window.addEventListener("scroll", () => {
     }
     lastScrollY = window.scrollY <= 0 ? 0 : window.scrollY;
 });
-// --- END: ربط الأحداث وتشغيل التطبيق ---
