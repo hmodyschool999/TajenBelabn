@@ -17,17 +17,14 @@ function formatNameWithLineBreak(name, maxLength) {
     return `${part1}<br>${part2}`;
 }
 
-let cart = [];
 const loadingScreen = document.getElementById('loading');
 const dropdownBtn = document.getElementById('dropdown-btn');
 const dropdownMenu = document.getElementById('dropdown-menu');
 const menuContainer = document.getElementById('menu-container');
-const cartPage = document.getElementById('cart-page');
-const pageToggleButton = document.getElementById('page-toggle-btn');
-const cartItemsContainer = document.getElementById('cart-items-container');
-const totalPriceSpan = document.getElementById('total-price');
+const bottomBar = document.getElementById('bottom-bar');
 const branchSelect = document.getElementById('branch-select');
 const callNowBtn = document.getElementById('call-now-btn');
+
 
 function loadAndProcessMenu() {
     try {
@@ -56,14 +53,9 @@ function renderDropdown(categories) {
             e.preventDefault();
             const section = document.getElementById(category);
             if (section) {
-                if (cartPage.classList.contains("hidden")) {
-                    section.scrollIntoView({ behavior: "smooth", block: "start" });
-                } else {
-                    togglePageView();
-                    setTimeout(() => { section.scrollIntoView({ behavior: "smooth", block: "start" }) }, 100);
-                }
-                dropdownMenu.classList.add("hidden");
+                section.scrollIntoView({ behavior: "smooth", block: "start" });
             }
+            dropdownMenu.classList.add("hidden");
         };
         dropdownMenu.appendChild(link);
     });
@@ -82,7 +74,7 @@ function renderMenu(menuData, categoriesInOrder) {
         const grid = document.createElement("div");
         grid.className = "grid grid-cols-1 md:grid-cols-2 gap-6";
         menuData[categoryName].forEach(item => {
-            grid.appendChild(createItemCard(item, categoryName));
+            grid.appendChild(createItemCard(item));
         });
         section.appendChild(grid);
         menuContainer.appendChild(section);
@@ -94,7 +86,7 @@ function renderMenu(menuData, categoriesInOrder) {
     });
 }
 
-function createItemCard(item, category) {
+function createItemCard(item) {
     const card = document.createElement("div");
     card.className = "item-card relative rounded-lg shadow-xl overflow-hidden transition-all duration-300";
     card.style.setProperty("--banner-normal", `url('${IMAGE_BASE_PATH}/banner/normal.png')`);
@@ -147,52 +139,25 @@ function createItemCard(item, category) {
     if (item.description) {
         details.innerHTML += `<p class="text-white"><strong class="text-[#6dd9f3]">المكونات:</strong> ${item.description}</p>`;
     }
-
-    details.innerHTML += `
-        <div class="price-container flex justify-between items-center"></div>
-        <div class="actions-container mt-4"></div>
-    `;
-
-    card.appendChild(summary);
-    card.appendChild(details);
-
-    const priceContainer = details.querySelector('.price-container');
-    const actionsContainer = details.querySelector('.actions-container');
-    const hasTwoPrices = item.price2 !== undefined && item.price2 !== null;
-    let prices = [];
-
-    if (hasTwoPrices) {
-        priceContainer.innerHTML = `<p class="text-xl font-bold text-white">اختر الحجم:</p>`;
-        const priceSelector = document.createElement('div');
-        priceSelector.className = 'flex items-center justify-center gap-2 flex-wrap mb-4';
-        prices = [{ label: 'S', price: item.price }, { label: 'M', price: item.price2 }];
-        prices.forEach(p => {
-            const btn = document.createElement('button');
-            btn.className = 'price-btn';
-            btn.dataset.price = p.price;
-            btn.textContent = `${p.price.toFixed(2)} ج.م`;
-            priceSelector.appendChild(btn);
-        });
-        actionsContainer.appendChild(priceSelector);
-        const quantityControls = document.createElement('div');
-        quantityControls.className = 'quantity-controls hidden';
-        quantityControls.innerHTML = `<div class="flex items-center justify-between gap-2"><div class="flex items-center gap-2"><button class="quantity-btn minus-btn">-</button><input type="number" value="1" min="1" class="item-quantity w-16 p-2 rounded bg-gray-700 text-white text-center font-bold"><button class="quantity-btn plus-btn">+</button></div><button class="add-to-cart-btn font-bold py-2 px-4 rounded-lg text-sm">أضف للسلة</button></div>`;
-        actionsContainer.appendChild(quantityControls);
-        priceSelector.querySelectorAll('.price-btn').forEach(btn => {
-            btn.onclick = (e) => {
-                priceSelector.querySelectorAll('.price-btn').forEach(b => {
-                    b.classList.remove('selected');
-                    if (b !== e.target) b.classList.add('hidden');
-                });
-                e.target.classList.add('selected');
-                e.target.classList.remove('hidden');
-                quantityControls.classList.remove('hidden');
-            };
-        });
+    
+    const priceContainer = document.createElement('div');
+    priceContainer.className = "price-container mt-2";
+    
+    if (item.price2 !== undefined && item.price2 !== null) {
+        priceContainer.innerHTML = `
+            <div class="flex justify-start items-center gap-4">
+                 <p class="text-xl font-bold text-white"><span class="font-medium text-gray-300">S:</span> ${item.price.toFixed(2)} ج.م</p>
+                 <p class="text-xl font-bold text-white"><span class="font-medium text-gray-300">M:</span> ${item.price2.toFixed(2)} ج.م</p>
+            </div>
+        `;
     } else {
         priceContainer.innerHTML = `<p class="text-2xl font-bold text-[#6dd9f3]">${item.price.toFixed(2)} ج.م</p>`;
-        actionsContainer.innerHTML = `<div class="flex items-center justify-between gap-2"><div class="flex items-center gap-2"><button class="quantity-btn minus-btn">-</button><input type="number" value="1" min="1" class="item-quantity w-16 p-2 rounded bg-gray-700 text-white text-center font-bold"><button class="quantity-btn plus-btn">+</button></div><button class="add-to-cart-btn font-bold py-2 px-4 rounded-lg text-sm">أضف للسلة</button></div>`;
     }
+    
+    details.appendChild(priceContainer);
+    
+    card.appendChild(summary);
+    card.appendChild(details);
 
     summary.onclick = () => {
         const isMobile = window.innerWidth < 768;
@@ -222,149 +187,47 @@ function createItemCard(item, category) {
                 pairCard.classList.toggle('expanded', !isCurrentlyExpanded);
             }
         }
-        const isCurrentlyExpanded = card.classList.contains('expanded');
-        if (!isCurrentlyExpanded && hasTwoPrices) {
-            actionsContainer.querySelector('.quantity-controls').classList.add('hidden');
-            actionsContainer.querySelectorAll('.price-btn').forEach(b => {
-                b.classList.remove('selected', 'hidden');
-            });
-        }
     };
-
-    actionsContainer.addEventListener("click", e => {
-        const target = e.target;
-        const quantityInput = actionsContainer.querySelector('.item-quantity');
-        if (target.matches('.plus-btn')) {
-            quantityInput.value = parseInt(quantityInput.value) + 1;
-        } else if (target.matches('.minus-btn')) {
-            quantityInput.value = Math.max(1, parseInt(quantityInput.value) - 1);
-        } else if (target.matches('.add-to-cart-btn')) {
-            const quantity = parseInt(quantityInput.value);
-            let selectedPrice = item.price;
-            let sizeLabel = null;
-            if (hasTwoPrices) {
-                const selectedBtn = actionsContainer.querySelector('.price-btn.selected');
-                if (!selectedBtn) { alert('الرجاء اختيار السعر أولاً'); return; }
-                selectedPrice = parseFloat(selectedBtn.dataset.price);
-                const foundPrice = prices.find(p => p.price === selectedPrice);
-                sizeLabel = foundPrice ? foundPrice.label : null;
-            }
-            addToCart(item, category, quantity, { price: selectedPrice, size: sizeLabel }, target);
-        }
-    });
 
     return card;
 }
 
-function saveCart() { localStorage.setItem("tajenCart", JSON.stringify({ data: cart })) }
-function loadCart() { const savedCart = localStorage.getItem("tajenCart"); if (savedCart) { cart = JSON.parse(savedCart).data || [] } updateCartDisplay() }
-
-function addToCart(item, category, quantity, options, button) {
-    const selectedPrice = options ? options.price : item.price;
-    const size = options ? options.size : null;
-    const cartItemId = `${item.id}_${category}_${selectedPrice}`;
-    const existingItem = cart.find(i => i.cartItemId === cartItemId);
-    if (existingItem) {
-        existingItem.quantity += quantity;
-    } else {
-        const newItem = {
-            ...item,
-            cartItemId,
-            category,
-            quantity,
-            price: selectedPrice,
-            size: size
-        };
-        cart.push(newItem);
-    }
-    saveCart();
-    updateCartDisplay();
-    if (button) {
-        const originalText = button.innerHTML;
-        button.innerHTML = "✔";
-        button.disabled = true;
-        setTimeout(() => { button.innerHTML = originalText; button.disabled = false; }, 1500);
-    }
+function updateCallButton() {
+    callNowBtn.href = branchPhoneNumbers[branchSelect.value] || '#';
 }
-
-function updateCartQuantity(cartItemId, amount) {
-    const item = cart.find(i => i.cartItemId === cartItemId);
-    if (item) {
-        item.quantity += amount;
-        if (item.quantity <= 0) {
-            cart = cart.filter(i => i.cartItemId !== cartItemId);
-        }
-        saveCart();
-        updateCartDisplay();
-    }
-}
-
-function updateCartDisplay() {
-    const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-    const cartCountElem = pageToggleButton.querySelector("#cart-count");
-    if (cartCountElem) cartCountElem.textContent = totalItems;
-    cartItemsContainer.innerHTML = cart.length === 0 ? '<p class="text-center text-gray-400">سلة الطلبات فارغة حاليًا.</p>' : "";
-    let total = 0;
-    cart.forEach(item => {
-        const cartItemElem = document.createElement("div");
-        cartItemElem.className = "cart-item flex items-center justify-between p-3 rounded-lg";
-        const price = parseFloat(item.price);
-        const itemTotal = price * item.quantity;
-        total += itemTotal;
-        const displayName = item.size ? `${item.name} (${item.size})` : item.name;
-        cartItemElem.innerHTML = `
-<div class="flex items-center gap-3">
-<img src="${item.full_image_path}" class="w-16 h-16 rounded-md object-cover">
-<div>
-<p class="font-bold text-white">${displayName}</p>
-<div class="flex items-center gap-2 mt-1">
-<button class="quantity-btn minus-btn">-</button>
-<span class="text-sm text-gray-300 font-bold w-4 text-center">${item.quantity}</span>
-<button class="quantity-btn plus-btn">+</button>
-</div>
-</div>
-</div>
-<div class="text-right">
-<p class="font-semibold text-white">${itemTotal.toFixed(2)} ج.م</p>
-<button class="text-red-500 text-xs hover:text-red-400 remove-from-cart-btn">إزالة</button>
-</div>`;
-        cartItemElem.querySelector(".plus-btn").onclick = () => updateCartQuantity(item.cartItemId, 1);
-        cartItemElem.querySelector(".minus-btn").onclick = () => updateCartQuantity(item.cartItemId, -1);
-        cartItemElem.querySelector(".remove-from-cart-btn").onclick = () => updateCartQuantity(item.cartItemId, -item.quantity);
-        cartItemsContainer.appendChild(cartItemElem);
-    });
-    totalPriceSpan.textContent = `${total.toFixed(2)} ج.م`;
-}
-
-function togglePageView() {
-    const isMenuVisible = !menuContainer.classList.contains("hidden");
-    menuContainer.classList.toggle("hidden", isMenuVisible);
-    cartPage.classList.toggle("hidden", !isMenuVisible);
-    pageToggleButton.innerHTML = isMenuVisible
-        ? `<span>📖</span> المنيو`
-        : `<span>🛒</span> السلة(<span id="cart-count">${cart.reduce((s, i) => s + i.quantity, 0)}</span>)`;
-    window.scrollTo(0, 0);
-}
-function updateCallButton() { callNowBtn.href = branchPhoneNumbers[branchSelect.value] || "#"; }
 
 document.addEventListener('DOMContentLoaded', () => {
-    loadCart();
     loadAndProcessMenu();
-    updateCallButton();
     document.getElementById('copyright-year').textContent = new Date().getFullYear();
+    updateCallButton();
 });
+
 dropdownBtn.addEventListener('click', () => dropdownMenu.classList.toggle('hidden'));
-pageToggleButton.addEventListener('click', togglePageView);
 branchSelect.addEventListener('change', updateCallButton);
-callNowBtn.addEventListener('click', () => { if (cart.length > 0) saveCart(); });
+
 
 let lastScrollY = window.scrollY;
 const header = document.querySelector("header");
+
 window.addEventListener("scroll", () => {
-    if (window.scrollY < lastScrollY || window.scrollY < 100) {
+    const currentScrollY = window.scrollY;
+    const isAtBottom = window.innerHeight + currentScrollY >= document.documentElement.scrollHeight - 5;
+
+    if (currentScrollY < lastScrollY || currentScrollY < 100) {
         header.classList.remove("translate-y-[-100%]");
     } else {
         header.classList.add("translate-y-[-100%]");
     }
-    lastScrollY = window.scrollY <= 0 ? 0 : window.scrollY;
+
+    if (currentScrollY > lastScrollY && !isAtBottom) {
+        bottomBar.classList.remove('visible');
+    } else {
+        bottomBar.classList.add('visible');
+    }
+    
+    if (currentScrollY < 100) {
+        bottomBar.classList.remove('visible');
+    }
+
+    lastScrollY = currentScrollY <= 0 ? 0 : currentScrollY;
 });

@@ -170,7 +170,7 @@ export const menu_database_db = [
     ],
     dessert: [
         { id: 1, name: "بسبوسة مكسرات", price: 50, description: null },
-        { id: 2, name: "كنافة فور سيزون", price: 150, description: "نوتيلا، لوتس، مانجة، مكسرات" }
+        { id: 2, name: "كنافة فور سيزون", price: 150, description: "نوتيلا، لوتس، اوريو، مانجة، مكسرات" }
     ],
     extras: [
         { id: 1, name: "عسل نحل", price: 5, description: null },

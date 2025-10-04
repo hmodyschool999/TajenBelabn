@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link href="style.css" rel="stylesheet">
     <link rel="icon" type="image/png" href="images/banner/avater.png">
-</head>
+</head> 
 <body>
 
     <div id="loading" class="fixed inset-0 bg-gray-900 bg-opacity-90 flex flex-col justify-center items-center z-[100]">
@@ -22,17 +22,12 @@
         <div class="container mx-auto max-w-md">
             <div class="w-full flex justify-between items-center px-4">
                 <div>
-                    <img src="images/banner/avater.png" alt="شعار المحل" class="h-12 md:h-16">
+                    <img src="images/banner/avater.png" alt="شعار المحل" class="h-14 md:h-17">
                 </div>
                 
                 <div class="flex items-center gap-3">
-                    <button id="page-toggle-btn" class="flex items-center gap-2 bg-[#0074d9] px-3 py-1.5 rounded-lg font-bold text-base whitespace-nowrap">
-                        <span>🛒</span>
-                        <span>السلة (<span id="cart-count">0</span>)</span>
-                    </button>
-    
                     <div class="relative" id="dropdown-container">
-                        <button id="dropdown-btn" class="flex items-center gap-2 bg-[#0074d9] px-3 py-1.5 rounded-lg font-bold text-base whitespace-nowrap">
+                        <button id="dropdown-btn" class="flex items-center gap-2 bg-[#0074d9] px-5 py-1.5 rounded-lg font-bold text-base whitespace-nowrap">
                             <span>الأصناف</span>
                             <svg class="w-5 h-5 transition-transform duration-300" id="dropdown-arrow" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" /></svg>
                         </button>
@@ -45,36 +40,29 @@
     
     <main class="container mx-auto max-w-4xl p-4 pt-32 md:pt-40">
         <div id="menu-container" class="w-full space-y-12"></div>
-        
-        <div id="cart-page" class="hidden w-full space-y-6">
-            <h2 class="text-3xl font-extrabold text-[#00a2fa] mb-6 border-b-2 border-[#0074d9]/50 pb-3">سلة الطلبات</h2>
-            <div id="cart-items-container" class="space-y-4"></div>
-            <div id="cart-summary" class="mt-8 p-4 rounded-lg" style="background-color: rgba(0,0,0,0.2);">
-                <div class="flex justify-between items-center text-2xl font-bold text-white">
-                    <span>الإجمالي:</span>
-                    <span id="total-price">0.00 ج.م</span>
-                </div>
-                
-                <p class="text-xs text-gray-400 mt-1 text-right">السعر غير شامل التوصيل</p>
-                
-                <div class="mt-6">
-                    <label for="branch-select" class="block mb-2 font-bold text-white">اختر الفرع للطلب:</label>
-                    <select id="branch-select" class="w-full p-2 rounded bg-gray-700 text-white border border-gray-600">
-                        <option value="abokbeer">ابوكبير</option>
-                        <option value="hehya">ههيا</option>
-                        <option value="zagazig">الزقازيق</option>
-                        <option value="faqous">فاقوس</option>
-                        <option value="kafrsaqr">كفرصقر</option>
-                    </select>
-                </div>
-                <a id="call-now-btn" href="#" class="call-btn mt-6 block w-full text-center text-white font-bold py-3 px-4 rounded-lg text-xl">
-                    📞 اتصل الآن للطلب
+    </main>
+
+    <div id="bottom-bar" class="fixed bottom-0 left-0 right-0 w-full z-40 transition-transform duration-300">
+        <div class="container mx-auto max-w-md p-2">
+            <div class="bg-gray-800 bg-opacity-80 backdrop-blur-sm rounded-lg shadow-lg p-3 flex items-center justify-between gap-3">
+                <select id="branch-select" class="w-3/12 p-2 rounded bg-gray-700 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-[#00a2fa]">
+                    <option value="abokbeer">ابوكبير</option>
+                    <option value="hehya">ههيا</option>
+                    <option value="zagazig">الزقازيق</option>
+                    <option value="faqous">فاقوس</option>
+                    <option value="kafrsaqr">كفرصقر</option>
+                </select>
+                <a id="call-now-btn" href="#" class="call-btn flex-shrink-0 w-8/12 text-white font-bold py-2 px-4 rounded-lg text-base flex items-center justify-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                        <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.518.759a11.03 11.03 0 004.28 4.28l.759-1.518a1 1 0 011.06-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"></path>
+                    </svg>
+                    <span>اطلب الآن</span>
                 </a>
             </div>
         </div>
-    </main>
+    </div>
 
-    <footer class="text-center py-6 mt-12 border-t border-gray-700">
+    <footer class="text-center py-6 mt-12 border-t border-gray-700 pb-24">
         <p class="text-gray-400 text-sm">
             Made with ❤️ by 
             <a href="https://hmody-site.netlify.app/" target="_blank" rel="noopener noreferrer" class="creator-name">Hmody Code</a>

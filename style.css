@@ -113,6 +113,18 @@ main { flex-grow: 1; }
     color: white;
     border-color: #00a2fa;
 }
+#bottom-bar {
+    transform: translateY(100%); 
+}
+#bottom-bar.visible {
+    transform: translateY(0); 
+}
+body {
+    padding-bottom: 100px; 
+}
+.item-card.expanded h3 br {
+    display: none;
+}
 /* .item-card h3 {
     font-size: 0.8rem; 
     border-block: 700;
@@ -121,5 +133,4 @@ main { flex-grow: 1; }
 }
 .item-card.expanded h3 {
     font-size: medium; 
-
 } */
