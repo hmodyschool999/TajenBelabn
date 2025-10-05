@@ -146,12 +146,12 @@ function createItemCard(item) {
     if (item.price2 !== undefined && item.price2 !== null) {
         priceContainer.innerHTML = `
             <div class="flex justify-start items-center gap-4">
-                 <p class="text-xl font-bold text-white"><span class="font-medium text-gray-300">S:</span> ${item.price.toFixed(2)} ج.م</p>
-                 <p class="text-xl font-bold text-white"><span class="font-medium text-gray-300">M:</span> ${item.price2.toFixed(2)} ج.م</p>
+                 <p class="text-xl font-bold text-white"><span class="font-medium text-gray-300">ج</span> ${item.price.toFixed(2)} :S</p>
+                 <p class="text-xl font-bold text-white"><span class="font-medium text-gray-300">ج</span> ${item.price2.toFixed(2)} :M</p>
             </div>
         `;
     } else {
-        priceContainer.innerHTML = `<p class="text-2xl font-bold text-[#6dd9f3]">${item.price.toFixed(2)} ج.م</p>`;
+        priceContainer.innerHTML = `<p class="text-2xl font-bold text-[#6dd9f3]">${item.price.toFixed(2)} ج</p>`;
     }
     
     details.appendChild(priceContainer);
