@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>طاجن بلبن</title>
+
+    <link href="style.css" rel="stylesheet">
+    <meta name="description" content="طاجن بلبن | منتجات من كوكب السعادة 💙">
+    <meta name="keywords" content="طاجن بلبن, Tajen Belabn, حلويات, قشطوطه, رز بلبن, من خير الطبيعه, كشري الحلو, لبن, ايس كريم, بيستاشيو, ابوكبير, طاجن بلبن ابوكبير, Menu Tajen Belabn, Tajen Belabn menu, طاجن بلبن منيو , طاجن بلبن الشرقيه, طاجن بلبن فاقوس, طاجن بلبن الزقازيق, طاجن بلبن كفر صقر, طاجن بلبن ابوحماد, طاجن بلبن ههيا, بلبن, طاجن, منيو اونلاين, منيو طاجن بلبن, منيو طاجن, منيو بلبن, مصر, طاجن لبن">
+    <meta name="author" content="Tajen Belabn">
+    <meta property="og:title" content="طاجن بلبن" />
+    <meta property="og:description" content="منتجات من كوكب السعادة 💙" />
+    <meta property="og:image" content="https://tajenbelabn.com/pic/preview.jpg" />
+    <meta property="og:url" content="https://tajenbelabn.com" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" type="image/png" href="pic/logo.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+</head> 
+    
+<body>
+    <div id="bubble-container"></div>
+
+    <header>
+        <nav class="container">
+            <div class="logo-section">
+                <img src="pic/logo.png" alt="شعار طاجن بلبن" class="logo-img animate-float">
+            </div>
+
+            <div class="nav-links">
+                <a href="#home">الرئيسية</a>
+                <a href="#menu">المنيو</a>
+                <a href="#branches">الفروع</a>
+                <a href="#contact">تواصل معنا</a>
+            </div>
+
+            <button class="menu-btn" id="menu-btn">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </nav>
+
+        <div class="mobile-nav" id="mobile-nav">
+            <a href="#home" onclick="closeMobileMenu()">الرئيسية</a>
+            <a href="#menu" onclick="closeMobileMenu()">المنيو</a>
+            <a href="#branches" onclick="closeMobileMenu()">الفروع</a>
+            <a href="#contact" onclick="closeMobileMenu()">تواصل معنا</a>
+        </div>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="carousel">
+            <div class="carousel-slide active">
+                <img src="show/show-1.jpg">
+            </div>
+            <div class="carousel-slide">
+                <img src="show/show-2.jpg">
+            </div>
+            <div class="carousel-slide">
+                <img src="show/show-3.jpg">
+            </div>
+            <div class="carousel-overlay"></div>
+        </div>
+        <div class="hero-text">
+            <h1 class="animate-slide-up">شركاء السعادة 💙</h1>
+        </div>
+        <div class="hero-wave">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z" class="shape-fill"></path>
+            </svg>
+        </div>
+    </section>
+
+    <section id="menu">
+        <div class="container">
+            <h2 class="section-title">منيو السعادة</h2>
+            <div class="section-divider"></div>
+            <div class="menu-grid">
+                <div class="menu-text animate-slide-up">
+                    <h3>استكشف منتجاتنا</h3>
+                    <p>قائمتنا مليئة بالحلويات الفاخرة المصنوعة من خير الطبيعه تجربة لا تُنسى.</p>
+                    <a href="https://menu.tajenbelabn.com" target="_blank" class="btn btn-primary">
+                        عرض المنيو بالكامل
+                        <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5-5 5M5 12h13"></path></svg>
+                    </a>
+                </div>
+                <div class="menu-image animate-slide-up">
+                    <div class="menu-image-wrapper">
+                        <img src="https://menu.tajenbelabn.com/images/banner/preview.jpg" alt="معاينة القائمة">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="branches">
+        <div class="container">
+            <h2 class="section-title">فروعنا</h2>
+            <div class="section-divider"></div>
+            <div class="branches-grid" id="branches-grid">
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">انضم لعائلتنا</h2>
+            <div class="section-divider"></div>
+            <div class="social-media-bar animate-slide-up">
+                <div class="social-media-text">
+                    <h3>تابعنا لتبقى على اطلاع</h3>
+                    <p>انضم لمجتمعنا على وسائل التواصل لتعرف آخر منتجاتنا وعروضنا أولاً بأول!</p>
+                </div>
+                <div class="social-links">
+                    <a href="https://facebook.com/tajenbelabn" target="_blank" class="social-btn" title="فيسبوك"><img src="media/facebook.png" alt="فيسبوك"></a>
+                    <a href="https://instagram.com/tajenbelabn" target="_blank" class="social-btn" title="إنستجرام"><img src="media/instagram.png" alt="إنستجرام"></a>
+                    <a href="https://tiktok.com/@tajenbelabn" target="_blank" class="social-btn" title="تيك توك"><img src="media/tik.png" alt="تيك توك"></a>
+                    <a href="mailto:tajenbelabn@gmail.com" class="social-btn" title="البريد الإلكتروني"><img src="media/gmail.png" alt="البريد الإلكتروني"></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content container">
+            <p class="copyright">
+                .Tajen Belabn. All Rights Reserved
+            </p>
+            <p class="made-by">
+            Made with ❤️ by 
+            <a href="https://hmody-site.netlify.app/" target="_blank" rel="noopener noreferrer" class="creator-name">Hmody Code</a>
+            </p>
+        </div>
+    </footer>
+
+    <div class="fab-container">
+        <button class="fab" id="complaints-toggle-fab">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+        </button>
+        <div class="fab-dropdown" id="complaints-dropdown-fab">
+            <h3>للشكاوي والاقتراحات</h3>
+            <a href="https://wa.me/201025741199" target="_blank" class="btn btn-green">
+                محمد ابراهيم
+            </a>
+        </div>
+    </div>
+
+    <script type="module" src="script.js"></script>
+</body>
+</html>
