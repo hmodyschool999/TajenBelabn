@@ -18,14 +18,14 @@ const branches = [
         name: "فرع ههيا",
         address: "بجوار المحكمه",
         image: "branche/3.jpg",
-        mapsUrl: "#"
+        mapsUrl: "https://maps.app.goo.gl/dA7PMAGMvu6ZohhPA"
     },
     {
         id: 4,
         name: "فرع فاقوس",
         address: "المنشيه الجديده - شارع ابو دهشان",
         image: "branche/4.jpg",
-        mapsUrl: "#"
+        mapsUrl: "https://maps.app.goo.gl/1FmWer1z6JBem8358"
     },
     {
         id: 5,
@@ -149,4 +149,5 @@ document.addEventListener('DOMContentLoaded', () => {
         setInterval(createBubbles, 4000);
         createBubbles();
     }, 500);
+
 });
