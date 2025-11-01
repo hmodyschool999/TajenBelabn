@@ -11,7 +11,7 @@ const branches = [
         name: "فرع الزقازيق",
         address: "القوميه - بجوار مطعم طأطأ",
         image: "branche/2.jpg",
-        mapsUrl: "#"
+        mapsUrl: "https://maps.app.goo.gl/kqGoKAAf3VAhdf9n9"
     },
     {
         id: 3,
@@ -151,3 +151,4 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 500);
 
 });
+
