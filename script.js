@@ -32,7 +32,7 @@ const branches = [
         name: "فرع كفرصقر",
         address: "امام مركز الشرطه",
         image: "branche/5.jpg",
-        mapsUrl: "#"
+        mapsUrl: "https://maps.app.goo.gl/rZmVVSUDiago7UjXA"
     }
 ];
 
@@ -151,5 +151,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 500);
 
 });
+
 
 
