@@ -4,7 +4,7 @@ const branches = [
         name: "فرع ابو كبير",
         address: "مفارق متولي سعد - بجوار بنك مصر",
         image: "branche/1.jpg",
-        mapsUrl: "https://maps.app.goo.gl/gD8j2f3nB8YyWp4s7"
+        mapsUrl: "https://maps.app.goo.gl/Uyxpn6kioCdixX8J9"
     },
     {
         id: 2,
@@ -151,4 +151,5 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 500);
 
 });
+
 
