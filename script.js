@@ -11,7 +11,7 @@ const branches = [
         name: "فرع الزقازيق",
         address: "القوميه - بجوار مطعم طأطأ",
         image: "branche/2.jpg",
-        mapsUrl: "https://maps.app.goo.gl/kqGoKAAf3VAhdf9n9"
+        mapsUrl: "https://maps.app.goo.gl/GmiNsoiRQt6GKPtXA"
     },
     {
         id: 3,
@@ -32,7 +32,7 @@ const branches = [
         name: "فرع كفرصقر",
         address: "امام مركز الشرطه",
         image: "branche/5.jpg",
-        mapsUrl: "https://maps.app.goo.gl/rZmVVSUDiago7UjXA"
+        mapsUrl: "https://maps.app.goo.gl/cpq2zQadY1PbHt8R8"
     }
 ];
 
@@ -151,6 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 500);
 
 });
+
 
 
 
