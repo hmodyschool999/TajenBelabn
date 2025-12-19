@@ -162,7 +162,8 @@ nav.container {
 }
 
 .nav-links a:hover {
-  background-color: var(--color-bg);
+  background-color: transparent; 
+  color: var(--color-primary-dark); 
 }
 
 .menu-btn {
@@ -176,7 +177,8 @@ nav.container {
 }
 
 .menu-btn:hover {
-  background-color: var(--color-bg);
+  background-color: transparent; 
+  transform: scale(1.1);
 }
 
 .menu-btn svg {
@@ -262,7 +264,7 @@ nav.container {
   z-index: 10;
 }
 
-.hero-text h1 {
+.hero-text h2 {
   font-size: 2.5rem;
   font-weight: 900;
   color: white;
@@ -271,7 +273,7 @@ nav.container {
 }
 
 @media (min-width: 768px) {
-  .hero-text h1 {
+  .hero-text h2 {
     font-size: 3.75rem;
   }
 }
@@ -743,4 +745,351 @@ footer {
   .mobile-nav {
     display: none !important;
   }
+}
+
+/* --- Recruitment / Jobs Section Styling --- */
+
+.recruitment-section {
+  margin-bottom: 4rem;
+}
+
+.jobs-card {
+  background: linear-gradient(145deg, #ffffff, #f0f9ff);
+  border-radius: 2rem;
+  padding: 2rem;
+  box-shadow: 0 10px 40px rgba(93, 156, 236, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  overflow: hidden;
+}
+
+.jobs-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+@media (min-width: 992px) {
+  .jobs-grid {
+      grid-template-columns: 1.2fr 0.8fr; /* مساحة أكبر للنص */
+      padding: 0 2rem;
+  }
+  
+  .jobs-text {
+      text-align: right;
+      order: 1; /* النص يمين */
+  }
+
+  .jobs-image-container {
+      order: 2; /* الصورة يسار */
+  }
+}
+
+.hiring-badge {
+  display: inline-block;
+  background: #e0f2fe;
+  color: var(--color-primary-dark);
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  border: 1px solid #bae6fd;
+}
+
+.jobs-text h3 {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  color: var(--color-text-dark);
+}
+
+.jobs-text p {
+  color: var(--color-text-light);
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-bottom: 2rem;
+  max-width: 90%;
+}
+
+/* .jobs-features {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+  flex-wrap: wrap;
+}
+
+.jobs-features span {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  color: var(--color-text-dark);
+}
+
+.jobs-features svg {
+  color: #22c55e; 
+} */
+
+/* تصميم الصورة عشان التيشيرت يظهر */
+.jobs-image-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.jobs-image-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 350px; /* تحجيم العرض */
+  aspect-ratio: 4/5; /* نسبة طولية مثالية للتيشيرت */
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+  z-index: 2;
+  transform: rotate(-2deg); /* ميلان بسيط "روش" */
+  transition: transform 0.3s ease;
+}
+
+.jobs-image-wrapper:hover {
+  transform: rotate(0deg) scale(1.02);
+}
+
+.jobs-image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* يملأ المساحة بدون مط */
+  object-position: top center; /* يركز على الجزء العلوي (التيشيرت واللوجو) */
+}
+
+/* شكل جمالي خلف الصورة */
+.blob-bg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 120%;
+  height: 120%;
+  background: radial-gradient(circle, var(--color-navbar) 0%, transparent 70%);
+  z-index: 1;
+  opacity: 0.6;
+}
+
+
+
+
+/* --- Job Page Styling --- */
+.job-hero {
+  padding: 120px 0 40px;
+  text-align: center;
+  background: transparent;
+}
+
+.job-hero h1 {
+  color: var(--primary-color, #0056b3); /* استبدل بالكود الأزرق الخاص بموقعك */
+  margin-bottom: 10px;
+  font-size: 2.5rem;
+}
+
+.form-section {
+  padding-bottom: 80px;
+}
+
+.job-form {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  max-width: 800px;
+  margin: 0 auto;
+  border: 1px solid rgba(0,0,0,0.05);
+}
+
+.form-group {
+  margin-bottom: 25px;
+  text-align: right;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+@media (max-width: 768px) {
+  .form-row {
+      grid-template-columns: 1fr;
+  }
+  .job-form {
+      padding: 20px;
+  }
+}
+
+.job-form label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: 700;
+  color: #333;
+  font-size: 1.1rem;
+}
+
+.job-form input[type="text"],
+.job-form input[type="number"],
+.job-form input[type="tel"],
+.job-form textarea {
+  width: 100%;
+  padding: 15px;
+  border: 2px solid #eee;
+  border-radius: 12px;
+  font-family: 'Cairo', sans-serif;
+  font-size: 1rem;
+  transition: 0.3s;
+  background: #f9f9f9;
+}
+
+.job-form input:focus,
+.job-form textarea:focus {
+  outline: none;
+  border-color: #0056b3; /* لون البراند */
+  background: #fff;
+  box-shadow: 0 0 0 4px rgba(0, 86, 179, 0.1);
+}
+
+.job-form textarea {
+  resize: vertical;
+}
+
+/* Custom Radio Buttons styling */
+.radio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 10px;
+}
+
+.radio-card {
+  position: relative;
+  cursor: pointer;
+}
+
+.radio-card input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.radio-card span {
+  display: block;
+  padding: 12px;
+  background: #f5f5f5;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  text-align: center;
+  font-weight: 600;
+  color: #555;
+  transition: 0.3s;
+}
+
+.radio-card input:checked + span {
+  background: #e6f0ff; /* لون خلفية خفيف عند التحديد */
+  border-color: #0056b3;
+  color: #0056b3;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 86, 179, 0.15);
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 15px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+/* --- Success Modal Styling --- */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6); /* خلفية معتمة */
+  z-index: 1000;
+  display: none; /* مخفي افتراضياً */
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(5px); /* تأثير ضبابي للخلفية */
+}
+
+.modal-overlay.active {
+  display: flex;
+}
+
+.modal-box {
+  background: white;
+  padding: 40px 30px;
+  border-radius: 25px;
+  text-align: center;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+  position: relative;
+}
+
+/* أيقونة علامة الصح */
+.success-icon-container {
+  width: 80px;
+  height: 80px;
+  background: #e6f7ef; /* لون خلفية خضراء فاتحة جداً */
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto 20px;
+}
+
+.success-icon {
+  width: 40px;
+  height: 40px;
+  fill: #00c851; /* لون أخضر للنجاح */
+}
+
+.modal-box h3 {
+  color: #333;
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.modal-box p {
+  color: #666;
+  margin-bottom: 25px;
+  line-height: 1.6;
+}
+
+.full-width-btn {
+  width: 100%;
+  padding: 12px;
+  font-size: 1.1rem;
+}
+
+/* أنيميشن ظهور النافذة */
+.animate-pop {
+  animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes popIn {
+  0% { transform: scale(0.8); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }

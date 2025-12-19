@@ -49,7 +49,7 @@ function renderBranches() {
                 <h3>${branch.name}</h3>
                 <p>📍 ${branch.address}</p>
                 <a href="${branch.mapsUrl}" target="_blank" class="btn btn-primary" style="width: 100%;">
-                    عرض على الخريطة 🗺️
+                    عرض على الخريطة 
                 </a>
             </div>
         </div>

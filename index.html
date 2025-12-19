@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>طاجن بلبن</title>
-
+ 
     <link href="style.css" rel="stylesheet">
     <meta name="description" content="طاجن بلبن | منتجات من كوكب السعادة 💙">
-    <meta name="keywords" content="طاجن بلبن, Tajen Belabn, حلويات, قشطوطه, رز بلبن, من خير الطبيعه, كشري الحلو, لبن, ايس كريم, بيستاشيو, ابوكبير, طاجن بلبن ابوكبير, Menu Tajen Belabn, Tajen Belabn menu, طاجن بلبن منيو , طاجن بلبن الشرقيه, طاجن بلبن فاقوس, طاجن بلبن الزقازيق, طاجن بلبن كفر صقر, طاجن بلبن ابوحماد, طاجن بلبن ههيا, بلبن, طاجن, منيو اونلاين, منيو طاجن بلبن, منيو طاجن, منيو بلبن, مصر, طاجن لبن">
+    <meta name="keywords" content="طاجن بلبن, Tajen Belabn, حلويات, قشطوطه, رز بلبن, من خير الطبيعه, كشري الحلو, لبن,طاجن ب لبن ,tajen b labn, ايس كريم, بيستاشيو, ابوكبير, طاجن بلبن ابوكبير, Menu Tajen Belabn, Tajen Belabn menu, طاجن بلبن منيو , طاجن بلبن الشرقيه, طاجن بلبن فاقوس, طاجن بلبن الزقازيق, طاجن بلبن كفر صقر, طاجن بلبن ابوحماد, طاجن بلبن ههيا, بلبن, طاجن, منيو اونلاين, منيو طاجن بلبن, منيو طاجن, منيو بلبن, مصر, طاجن لبن">
     <meta name="author" content="Tajen Belabn">
     <meta property="og:title" content="طاجن بلبن" />
     <meta property="og:description" content="منتجات من كوكب السعادة 💙" />
@@ -22,6 +22,9 @@
 </head> 
     
 <body>
+
+    <h1 class="visually-hidden">طاجن بلبن</h1>
+
     <div id="bubble-container"></div>
 
     <header>
@@ -34,6 +37,7 @@
                 <a href="#home">الرئيسية</a>
                 <a href="#menu">المنيو</a>
                 <a href="#branches">الفروع</a>
+                <a href="jobs.html">انضم إلينا</a>
                 <a href="#contact">تواصل معنا</a>
             </div>
 
@@ -48,6 +52,7 @@
             <a href="#home" onclick="closeMobileMenu()">الرئيسية</a>
             <a href="#menu" onclick="closeMobileMenu()">المنيو</a>
             <a href="#branches" onclick="closeMobileMenu()">الفروع</a>
+            <a href="jobs.html">انضم إلينا</a>
             <a href="#contact" onclick="closeMobileMenu()">تواصل معنا</a>
         </div>
     </header>
@@ -65,7 +70,7 @@
             <div class="carousel-overlay"></div>
         </div>
         <div class="hero-text">
-            <h1 class="animate-slide-up">من خير الطبيعة 💙</h1>
+            <h2 class="animate-slide-up">من خير الطبيعة 💙</h2>
         </div>
         <div class="hero-wave">
             <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
@@ -107,8 +112,40 @@
 
     <section id="contact">
         <div class="container">
-            <h2 class="section-title">انضم لعائلتنا</h2>
-            <div class="section-divider"></div>
+            <div class="container recruitment-section">
+                <h2 class="section-title">انضم لعائلتنا</h2>
+                <div class="section-divider"></div>
+            
+                <div class="jobs-card animate-slide-up">
+                    <div class="jobs-grid">
+                        
+                        <div class="jobs-text">
+                            <!-- <span class="hiring-badge">متاح التقديم الآن 🚀</span> -->
+                            <h3>انضم لفريق عمل طاجن بلبن</h3>
+                            <p>بيئة عمل احترافية، وروح شبابية. احنا مش بس بنقدم حلويات، احنا بنصنع سعادة. لو عندك الشغف، مكانك وسطنا.</p>
+                            
+                            <!-- <div class="jobs-features">
+                                <span><svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> رواتب مجزية</span>
+                                <span><svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> تدريب وتطوير</span>
+                            </div> -->
+            
+                            <a href="jobs.html" class="btn btn-primary btn-lg">
+                                انضم للفريق الآن
+                                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5-5 5M5 12h13"></path></svg>
+                            </a>
+                        </div>
+            
+                        <div class="jobs-image-container">
+                            <div class="jobs-image-wrapper">
+                                <img src="pic/jobs.jpg" alt="فريق عمل طاجن بلبن">
+                            </div>
+                            <div class="blob-bg"></div>
+                        </div>
+            
+                    </div>
+                </div>
+            </div>
+
             <div class="social-media-bar animate-slide-up">
                 <div class="social-media-text">
                     <h3>تابعنا لتبقى على اطلاع</h3>
@@ -118,7 +155,7 @@
                     <a href="https://www.facebook.com/share/1BhGdRbbCV/" target="_blank" class="social-btn" title="فيسبوك"><img src="media/facebook.png" alt="فيسبوك"></a>
                     <a href="https://www.instagram.com/tagen.blaban" target="_blank" class="social-btn" title="إنستجرام"><img src="media/instagram.png" alt="إنستجرام"></a>
                     <a href="https://www.tiktok.com/@tagen.blaban" target="_blank" class="social-btn" title="تيك توك"><img src="media/tik.png" alt="تيك توك"></a>
-                    <a href="mailto:tajenbelabn@gmail.com" class="social-btn" title="البريد الإلكتروني"><img src="media/gmail.png" alt="البريد الإلكتروني"></a>
+                    <!-- <a href="mailto:tajenbelabn@gmail.com" class="social-btn" title="البريد الإلكتروني"><img src="media/gmail.png" alt="البريد الإلكتروني"></a> -->
                 </div>
             </div>
         </div>
