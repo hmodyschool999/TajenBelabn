@@ -61,13 +61,9 @@
     <h1 class="visually-hidden">وظائف وفرص عمل في الشرقيه بدون خبرة</h1>
 
     <h2 class="visually-hidden">فرص عمل الزقازيق</h2>
-
     <h2 class="visually-hidden">فرص عمل ابوكبير</h2>
-
     <h2 class="visually-hidden">فرص عمل كفرصقر</h2>
-
     <h2 class="visually-hidden">فرص عمل ههيا</h2>
-
     <h2 class="visually-hidden">فرص عمل فاقوس</h2>
         
 
@@ -82,10 +78,10 @@
             </div>
 
             <div class="nav-links">
-                <a href="index.html">الرئيسية</a>
-                <a href="index.html#menu">المنيو</a>
-                <a href="index.html#branches">الفروع</a>
-                <a href="index.html#contact">تواصل معنا</a>
+                <a href="https://www.tajenbelabn.com/">الرئيسية</a>
+                <a href="https://menu.tajenbelabn.com" target="_blank">المنيو</a>
+                <a href="https://www.tajenbelabn.com/#branches">الفروع</a>
+                <a href="https://www.tajenbelabn.com/#contact">تواصل معنا</a>
             </div>
 
             <button class="menu-btn" id="menu-btn">
@@ -96,10 +92,10 @@
         </nav>
 
         <div class="mobile-nav" id="mobile-nav">
-            <a href="index.html">الرئيسية</a>
-            <a href="index.html#menu">المنيو</a>
-            <a href="index.html#branches">الفروع</a>
-            <a href="index.html#contact">تواصل معنا</a>
+            <a href="https://www.tajenbelabn.com/">الرئيسية</a>
+            <a href="https://menu.tajenbelabn.com" target="_blank">المنيو</a>
+            <a href="https://www.tajenbelabn.com/#branches">الفروع</a>
+            <a href="https://www.tajenbelabn.com/#contact">تواصل معنا</a>
         </div>
     </header>
 
@@ -126,7 +122,14 @@
                     </div>
                     <div class="form-group">
                         <label for="phone">رقم التواصل </label>
-                        <input type="tel" id="phone" name="entry.1072476630" placeholder="01xxxxxxxxx" required>
+                        <input type="tel" 
+                               id="phone" 
+                               name="entry.1072476630" 
+                               placeholder="01xxxxxxxxx" 
+                               maxlength="11" 
+                               pattern="01[0-9]{9}"
+                               title="يجب إدخال 11 رقم تبدأ بـ 01"
+                               required>
                     </div>
                 </div>
             
@@ -226,15 +229,14 @@
         </div>
     </footer>
 
-    <script type="module" src="script.js"></script>
     
-    <script>
+   <script>
         // تعريف العناصر
         const successModal = document.getElementById('successModal');
         const alreadyAppliedModal = document.getElementById('alreadyAppliedModal');
         const form = document.getElementById('hiringForm');
         
-        // رابط جوجل فورم (لاحظ تحويل viewform إلى formResponse)
+        // رابط جوجل فورم
         const GOOGLE_FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSd6cSSAs2FrREn-VAvuOaR6ZFAvVrr-VCMXWsKeU4PAVt6rdA/formResponse';
         
         const COOKIE_NAME = "tajen_hiring_status";
@@ -268,44 +270,61 @@
 
         // --- المنطق الرئيسي ---
 
-        // 1. التحقق عند التحميل
+        // 1. التحقق عند التحميل (هل قدم من قبل؟)
         window.addEventListener('load', function() {
             if (getCookie(COOKIE_NAME)) {
                 alreadyAppliedModal.classList.add('active');
             }
         });
 
-        // 2. إرسال البيانات لجوجل + حفظ الكوكيز + إظهار النافذة
+        // 2. معالجة الإرسال
         form.addEventListener('submit', async function(e) {
             e.preventDefault(); // منع تحديث الصفحة
-            
-            // تغيير نص الزر أثناء الإرسال
+
+            // أ) التحقق من رقم الهاتف
+            const phoneInput = document.getElementById('phone');
+            const phoneValue = phoneInput.value.trim();
+            const egyptPhoneRegex = /^01[0-9]{9}$/;
+        
+            if (!egyptPhoneRegex.test(phoneValue)) {
+                alert("عفواً، يجب إدخال رقم موبايل مصري صحيح مكون من 11 رقم ويبدأ بـ 01");
+                phoneInput.focus();
+                return; // إيقاف العملية
+            }
+        
+            // ب) تغيير شكل الزر
             const submitBtn = form.querySelector('.submit-btn');
             const originalText = submitBtn.innerHTML;
             submitBtn.innerHTML = 'جاري الإرسال... ⏳';
             submitBtn.disabled = true;
 
-            // تجهيز البيانات
+            // ج) تجهيز البيانات (مرة واحدة فقط)
             const formData = new FormData(form);
+            
+            // د) معالجة حقل الخبرة (إذا فارغ نضع "بدون")
+            const experienceValue = formData.get('entry.21494914');
+            if (!experienceValue || experienceValue.trim() === "") {
+                formData.set('entry.21494914', 'بدون');
+            }
 
             try {
-                // محاولة الإرسال لجوجل في الخلفية
+                // هـ) الإرسال الفعلي
                 await fetch(GOOGLE_FORM_URL, {
                     method: 'POST',
-                    body: formData,
-                    mode: 'no-cors' // هام جداً لتجاوز حماية المتصفح
+                    body: formData, // استخدام البيانات المعدلة
+                    mode: 'no-cors'
                 });
 
-                // في حالة النجاح (أو عدم ظهور خطأ):
-                setCookie(COOKIE_NAME, "applied", COOLDOWN_DAYS); // حفظ الكوكيز
-                successModal.classList.add('active'); // إظهار النافذة
-                form.reset(); // تفريغ الفورم
+                // نجاح الإرسال
+                setCookie(COOKIE_NAME, "applied", COOLDOWN_DAYS); 
+                successModal.classList.add('active'); 
+                form.reset(); 
 
             } catch (error) {
                 console.error('Error!', error.message);
                 alert("حدث خطأ في الاتصال، يرجى المحاولة مرة أخرى.");
             } finally {
-                // إرجاع الزر لحالته الأصلية
+                // إعادة الزر لوضعه الطبيعي
                 submitBtn.innerHTML = originalText;
                 submitBtn.disabled = false;
             }
@@ -321,4 +340,5 @@
     </script>
 
 </body>
+
 </html>
