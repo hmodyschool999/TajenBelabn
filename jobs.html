@@ -11,19 +11,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="pic/logo.png">
 
-    <!-- SEO Meta Tags | Careers & Jobs -->
     <meta name="description" content="انضم لفريق طاجن بلبن 💙 فرص عمل متاحة في فروعنا بالشرقية. قدّم الآن على وظائف مطاعم، كاشير، عمال، خدمة عملاء، وإدارة فروع.">
     <meta name="keywords" content="طاجن بلبن وظائف, وظائف طاجن بلبن, توظيف طاجن بلبن, شغل طاجن بلبن, فرص عمل طاجن بلبن, تقديم وظائف طاجن بلبن, Jobs Tajen Belabn, Careers Tajen Belabn, Tajen Belabn hiring, Work at Tajen Belabn, وظائف, وظيفة, شغل, شغلانة, فرص عمل, فرصة عمل, توظيف, وظائف عمل, شغل اليوم, وظائف اليوم, فرص عمل اليوم, وظائف بدون خبرة, شغل بدون خبرة, وظائف طلاب, شغل طلاب, وظائف خريجين, وظائف دوام كامل, وظائف دوام جزئي, وظائف مطاعم, شغل مطاعم, فرص عمل مطاعم, توظيف مطاعم, وظائف كاشير, شغل كاشير, وظائف عمال, شغل عمال, وظائف خدمة عملاء, شغل خدمة عملاء, تقديم وظائف مطاعم, الشرقية, فرص عمل بالشرقية, وظائف بالشرقية, شغل بالشرقية, وظائف مطاعم الشرقية, مطاعم الشرقية وظائف, الزقازيق, فرص عمل في الزقازيق, وظائف الزقازيق, شغل الزقازيق, ابو كبير, فرص عمل ابو كبير, وظائف ابو كبير, شغل ابو كبير, فاقوس, فرص عمل فاقوس, وظائف فاقوس, شغل فاقوس, ههيا, فرص عمل ههيا, وظائف ههيا, شغل ههيا, كفر صقر, فرص عمل كفر صقر, وظائف كفر صقر, شغل كفر صقر, مصر, وظائف مصر, فرص عمل في مصر, شغل في مصر, توظيف مطاعم مصر, Hiring restaurant Egypt, Restaurant jobs Egypt, Apply restaurant job">
     <meta name="author" content="Tajen Belabn HR Team">
 
-    <!-- Open Graph (Facebook / WhatsApp) -->
     <meta property="og:title" content="وظائف طاجن بلبن | انضم لفريق كوكب السعادة 💙" />
     <meta property="og:description" content="بنكبر وعايزين ناس شبهنا 🔥 قدّم دلوقتي على وظائف طاجن بلبن في كل الفروع بالشرقية." />
     <meta property="og:image" content="https://tajenbelabn.com/pic/jobs.jpg" />
     <meta property="og:url" content="https://tajenbelabn.com/jobs.html" />
     <meta property="og:type" content="website" />
 
-    <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="وظائف طاجن بلبن | انضم لفريق كوكب السعادة 💙">
     <meta name="twitter:description" content="بنكبر وعايزين ناس شبهنا 🔥 قدّم دلوقتي على وظائف طاجن بلبن في كل الفروع بالشرقية." >
@@ -41,7 +38,7 @@
             "logo": "https://tajenbelabn.com/pic/logo.png"
           },
           "employmentType": "FULL_TIME",
-          "datePosted": "2025-12-19",
+          "datePosted": "2025-12-20",
           "jobLocation": {
             "@type": "Place",
             "address": {
@@ -72,7 +69,7 @@
     <header>
         <nav class="container">
             <div class="logo-section">
-                <a href="index.html">
+                <a href="https://www.tajenbelabn.com/">
                     <img src="pic/logo.png" alt="شعار طاجن بلبن" class="logo-img animate-float">
                 </a>
             </div>
@@ -225,7 +222,7 @@
     <footer>
         <div class="footer-content container">
             <p class="copyright">.Tajen Belabn. All Rights Reserved</p>
-            <p class="made-by">Made with ❤️ by <a href=https://hmody-site.netlify.app/" class="creator-name">Hmody Code</a></p>
+            <p class="made-by">Made with ❤️ by <a href="https://hmody-site.netlify.app/" class="creator-name">Hmody Code</a></p>
         </div>
     </footer>
 
@@ -264,8 +261,10 @@
             return null;
         }
 
+        // --- تعديل دالة التحويل ---
         function redirectToHome() {
-            window.location.href = "index.html";
+            // توجيه للنطاق الرئيسي مباشرة
+            window.location.href = "https://www.tajenbelabn.com";
         }
 
         // --- المنطق الرئيسي ---
@@ -330,7 +329,7 @@
             }
         });
 
-        // إغلاق نافذة "مسجل بالفعل"
+        // إغلاق نافذة "مسجل بالفعل" عند الضغط خارج المربع
         alreadyAppliedModal.addEventListener('click', function(e) {
             if (e.target === alreadyAppliedModal) {
                 redirectToHome();
