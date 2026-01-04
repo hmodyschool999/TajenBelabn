@@ -771,17 +771,17 @@ footer {
 
 @media (min-width: 992px) {
   .jobs-grid {
-      grid-template-columns: 1.2fr 0.8fr; /* مساحة أكبر للنص */
+      grid-template-columns: 1.2fr 0.8fr;
       padding: 0 2rem;
   }
   
   .jobs-text {
       text-align: right;
-      order: 1; /* النص يمين */
+      order: 1; 
   }
 
   .jobs-image-container {
-      order: 2; /* الصورة يسار */
+      order: 2; 
   }
 }
 
@@ -812,26 +812,7 @@ footer {
   max-width: 90%;
 }
 
-/* .jobs-features {
-  display: flex;
-  gap: 1.5rem;
-  margin-bottom: 2.5rem;
-  flex-wrap: wrap;
-}
 
-.jobs-features span {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-weight: 600;
-  color: var(--color-text-dark);
-}
-
-.jobs-features svg {
-  color: #22c55e; 
-} */
-
-/* تصميم الصورة عشان التيشيرت يظهر */
 .jobs-image-container {
   position: relative;
   display: flex;
@@ -841,13 +822,13 @@ footer {
 .jobs-image-wrapper {
   position: relative;
   width: 100%;
-  max-width: 350px; /* تحجيم العرض */
-  aspect-ratio: 4/5; /* نسبة طولية مثالية للتيشيرت */
+  max-width: 350px; 
+  aspect-ratio: 4/5; 
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
   z-index: 2;
-  transform: rotate(-2deg); /* ميلان بسيط "روش" */
+  transform: rotate(-2deg); 
   transition: transform 0.3s ease;
 }
 
@@ -858,11 +839,10 @@ footer {
 .jobs-image-wrapper img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* يملأ المساحة بدون مط */
-  object-position: top center; /* يركز على الجزء العلوي (التيشيرت واللوجو) */
+  object-fit: cover; 
+  object-position: top center; 
 }
 
-/* شكل جمالي خلف الصورة */
 .blob-bg {
   position: absolute;
   top: 50%;
@@ -886,7 +866,7 @@ footer {
 }
 
 .job-hero h1 {
-  color: var(--primary-color, #0056b3); /* استبدل بالكود الأزرق الخاص بموقعك */
+  color: var(--primary-color, #0056b3); 
   margin-bottom: 10px;
   font-size: 2.5rem;
 }
@@ -950,7 +930,7 @@ footer {
 .job-form input:focus,
 .job-form textarea:focus {
   outline: none;
-  border-color: #0056b3; /* لون البراند */
+  border-color: #0056b3; 
   background: #fff;
   box-shadow: 0 0 0 4px rgba(0, 86, 179, 0.1);
 }
@@ -1013,12 +993,12 @@ footer {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.6); /* خلفية معتمة */
+  background: rgba(0, 0, 0, 0.6); 
   z-index: 1000;
-  display: none; /* مخفي افتراضياً */
+  display: none; 
   justify-content: center;
   align-items: center;
-  backdrop-filter: blur(5px); /* تأثير ضبابي للخلفية */
+  backdrop-filter: blur(5px); 
 }
 
 .modal-overlay.active {
@@ -1036,11 +1016,10 @@ footer {
   position: relative;
 }
 
-/* أيقونة علامة الصح */
 .success-icon-container {
   width: 80px;
   height: 80px;
-  background: #e6f7ef; /* لون خلفية خضراء فاتحة جداً */
+  background: #e6f7ef;
   border-radius: 50%;
   display: flex;
   justify-content: center;
@@ -1051,7 +1030,7 @@ footer {
 .success-icon {
   width: 40px;
   height: 40px;
-  fill: #00c851; /* لون أخضر للنجاح */
+  fill: #00c851; 
 }
 
 .modal-box h3 {
@@ -1072,7 +1051,6 @@ footer {
   font-size: 1.1rem;
 }
 
-/* أنيميشن ظهور النافذة */
 .animate-pop {
   animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
