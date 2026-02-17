@@ -1,158 +1,38 @@
-const branches = [
-    {
-        id: 1,
-        name: "فرع ابو كبير",
-        address: "مفارق متولي سعد - بجوار بنك مصر",
-        image: "branche/1.jpg",
-        mapsUrl: "https://maps.app.goo.gl/UaWBkYN2bknHHoAg8"
-    },
-    {
-        id: 2,
-        name: "فرع الزقازيق",
-        address: "القوميه - بجوار مطعم طأطأ",
-        image: "branche/2.jpg",
-        mapsUrl: "https://maps.app.goo.gl/GmiNsoiRQt6GKPtXA"
-    },
-    {
-        id: 3,
-        name: "فرع ههيا",
-        address: "بجوار المحكمه",
-        image: "branche/3.jpg",
-        mapsUrl: "https://maps.app.goo.gl/dA7PMAGMvu6ZohhPA"
-    },
-    {
-        id: 4,
-        name: "فرع فاقوس",
-        address: "المنشيه الجديده - شارع ابو دهشان",
-        image: "branche/4.jpg",
-        mapsUrl: "https://maps.app.goo.gl/1FmWer1z6JBem8358"
-    },
-    {
-        id: 5,
-        name: "فرع كفرصقر",
-        address: "امام مركز الشرطه",
-        image: "branche/5.jpg",
-        mapsUrl: "https://maps.app.goo.gl/cpq2zQadY1PbHt8R8"
-    }
-];
+/**
+ * Tajen Belabn - Modern Script
+ * Developed for High Performance & Smooth UX
+ */
 
-function renderBranches() {
-    const grid = document.getElementById('branches-grid');
-    if (!grid) return;
-    
-    grid.innerHTML = branches.map((branch, index) => `
-        <div class="branch-card" style="animation-delay: ${index * 100}ms">
-            <div class="branch-image">
-                <img loading="lazy" src="${branch.image}" alt="${branch.name}">
-            </div>
-            <div class="branch-content">
-                <h3>${branch.name}</h3>
-                <p>📍 ${branch.address}</p>
-                <a href="${branch.mapsUrl}" target="_blank" class="btn btn-primary" style="width: 100%;">
-                    عرض على الخريطة 
-                </a>
-            </div>
-        </div>
-    `).join('');
-}
+document.addEventListener('DOMContentLoaded', () => {
 
-let currentSlide = 0;
-const slides = document.querySelectorAll('.carousel-slide');
+    /* 1. Mobile Navigation Logic */
+    const mobileToggle = document.querySelector('.mobile-toggle');
+    const navMenu = document.querySelector('.nav-menu');
+    const navLinks = document.querySelectorAll('.nav-link');
 
-function nextSlide() {
-    if (slides.length === 0) return;
-    slides[currentSlide].classList.remove('active');
-    currentSlide = (currentSlide + 1) % slides.length;
-    slides[currentSlide].classList.add('active');
-}
+    if (mobileToggle && navMenu) {
+        mobileToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            navMenu.classList.toggle('active');
+            mobileToggle.classList.toggle('active');
+        });
 
-const menuBtn = document.getElementById('menu-btn');
-const mobileNav = document.getElementById('mobile-nav');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                mobileToggle.classList.remove('active');
+            });
+        });
 
-if (menuBtn) {
-    menuBtn.addEventListener('click', () => {
-        mobileNav.classList.toggle('active');
-    });
-}
-
-function closeMobileMenu() {
-    if (mobileNav) {
-        mobileNav.classList.remove('active');
-    }
-}
-
-const complaintsToggle = document.getElementById('complaints-toggle-fab');
-const complaintsDropdown = document.getElementById('complaints-dropdown-fab');
-
-if (complaintsToggle) {
-    complaintsToggle.addEventListener('click', (e) => {
-        e.stopPropagation();
-        complaintsDropdown.classList.toggle('active');
-    });
-}
-
-document.addEventListener('click', (e) => {
-    if (complaintsDropdown && !e.target.closest('.fab-container')) {
-        complaintsDropdown.classList.remove('active');
-    }
-});
-
-const fabContainer = document.querySelector('.fab-container');
-const contactSection = document.getElementById('contact');
-
-if (fabContainer && contactSection) {
-    const fabObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                fabContainer.classList.add('fab-visible');
-            } else {
-                fabContainer.classList.remove('fab-visible');
+        document.addEventListener('click', (e) => {
+            if (!navMenu.contains(e.target) && !mobileToggle.contains(e.target)) {
+                navMenu.classList.remove('active');
+                mobileToggle.classList.remove('active');
             }
         });
-    }, {
-        threshold: 0.1
-    });
-
-    fabObserver.observe(contactSection);
-}
-
-function createBubbles() {
-    const container = document.getElementById('bubble-container');
-    if (!container) return;
-    
-    const bubbleCount = 3;
-    for (let i = 0; i < bubbleCount; i++) {
-        const bubble = document.createElement('div');
-        bubble.className = 'bubble';
-        
-        const size = Math.random() * 80 + 40;
-        const duration = Math.random() * 8 + 12;
-        const delay = Math.random() * 5;
-        
-        bubble.style.width = `${size}px`;
-        bubble.style.height = `${size}px`;
-        bubble.style.left = `${Math.random() * 100}%`;
-        bubble.style.animationDelay = `${delay}s`;
-        bubble.style.animationDuration = `${duration}s`;
-        
-        container.appendChild(bubble);
-
-        setTimeout(() => bubble.remove(), (duration + delay) * 1000);
     }
-}
 
-document.addEventListener('DOMContentLoaded', () => {
-    renderBranches();
-    
-    setTimeout(() => {
-        setInterval(nextSlide, 5000);
-        setInterval(createBubbles, 4000);
-        createBubbles();
-    }, 500);
-
-});
-
-document.addEventListener('DOMContentLoaded', () => {
+    /* 2. Sticky Header Effect */
     const header = document.querySelector('header');
 
     window.addEventListener('scroll', () => {
@@ -162,5 +42,93 @@ document.addEventListener('DOMContentLoaded', () => {
             header.classList.remove('scrolled');
         }
     });
-});
 
+    /* 3. Hero Slider Functionality */
+    const slides = document.querySelectorAll('.slide');
+    let currentSlide = 0;
+    const slideInterval = 5000;
+
+    function nextSlide() {
+        if (slides.length === 0) return;
+        slides[currentSlide].classList.remove('active');
+        currentSlide = (currentSlide + 1) % slides.length;
+        slides[currentSlide].classList.add('active');
+    }
+
+    if (slides.length > 0) {
+        setInterval(nextSlide, slideInterval);
+    }
+
+    /* 4. Scroll Reveal Animation (Intersection Observer) */
+    const revealElements = document.querySelectorAll('.reveal-text, .reveal-up, .reveal-right, .reveal-left');
+
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        root: null,
+        threshold: 0.15,
+        rootMargin: "0px 0px -50px 0px"
+    });
+
+    revealElements.forEach(el => revealObserver.observe(el));
+
+    /* 5. Floating Action Button (FAB) Logic */
+    const fabTrigger = document.querySelector('#fab-trigger');
+    const fabWrapper = document.querySelector('.fab-wrapper');
+    const hiringSection = document.querySelector('.hiring-banner');
+
+    if (fabWrapper) {
+        fabWrapper.style.opacity = '0';
+        fabWrapper.style.transform = 'translateY(100px) scale(0.5)';
+        fabWrapper.style.transition = 'all 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55)';
+        fabWrapper.style.visibility = 'hidden';
+    }
+
+    if (hiringSection && fabWrapper) {
+        const fabObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    fabWrapper.style.visibility = 'visible';
+                    fabWrapper.style.opacity = '1';
+                    fabWrapper.style.transform = 'translateY(0) scale(1)';
+                } else {
+                    const rect = hiringSection.getBoundingClientRect();
+                    if (rect.top > window.innerHeight) {
+                        fabWrapper.style.opacity = '0';
+                        fabWrapper.style.transform = 'translateY(100px) scale(0.5)';
+                        fabWrapper.style.visibility = 'hidden';
+                        fabWrapper.classList.remove('active');
+                        if (fabTrigger) fabTrigger.style.transform = 'rotate(0deg)';
+                    }
+                }
+            });
+        }, {
+            threshold: 0.1 
+        });
+
+        fabObserver.observe(hiringSection);
+    }
+
+    if (fabTrigger && fabWrapper) {
+        fabTrigger.addEventListener('click', (e) => {
+            e.stopPropagation();
+            fabWrapper.classList.toggle('active');
+            fabTrigger.style.transform = fabWrapper.classList.contains('active') 
+                ? 'rotate(45deg)' 
+                : 'rotate(0deg)';
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!fabWrapper.contains(e.target)) {
+                fabWrapper.classList.remove('active');
+                if (fabTrigger) fabTrigger.style.transform = 'rotate(0deg)';
+            }
+        });
+    }
+
+});

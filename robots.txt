@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /cgi-bin/
+Disallow: /admin/
+
+Sitemap: https://tajenbelabn.com/sitemap.xml

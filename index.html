@@ -3,196 +3,284 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>طاجن بلبن</title>
- 
-    <link href="style.css" rel="stylesheet">
-    <meta name="description" content="طاجن بلبن | منتجات من كوكب السعادة 💙">
-    <meta name="keywords" content="طاجن بلبن, Tajen Belabn, حلويات, قشطوطه, رز بلبن, من خير الطبيعه, كشري الحلو, لبن,طاجن ب لبن ,tajen b labn, ايس كريم, بيستاشيو, ابوكبير, طاجن بلبن ابوكبير, Menu Tajen Belabn, Tajen Belabn menu, طاجن بلبن منيو , طاجن بلبن الشرقيه, طاجن بلبن فاقوس, طاجن بلبن الزقازيق, طاجن بلبن كفر صقر, طاجن بلبن ابوحماد, طاجن بلبن ههيا, بلبن, طاجن, منيو اونلاين, منيو طاجن بلبن, منيو طاجن, منيو بلبن, مصر, طاجن لبن">
+    <title>طاجن بلبن | منتجات من كوكب السعادة 💙</title>
+
+    <meta name="description" content="طاجن بلبن يقدم لكم أشهى الحلويات الشرقية والغربية، رز بلبن، قشطوطة، طواجن، وآيس كريم. اكتشف فروعنا في الشرقية (الزقازيق، أبو كبير، ههيا، فاقوس، كفر صقر).">
     <meta name="author" content="Tajen Belabn">
-    <meta property="og:title" content="طاجن بلبن" />
-    <meta property="og:description" content="منتجات من كوكب السعادة 💙" />
-    <meta property="og:image" content="https://tajenbelabn.com/pic/preview.jpg" />
+    <meta name="robots" content="index, follow">
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="طاجن بلبن - أصل السعادة" />
+    <meta property="og:description" content="جرب أحلى طواجن و رز بلبن وقشطوطة في الشرقية. خامات طبيعية 100%." />
+    <meta property="og:image" content="https://tajenbelabn.com/image/pic/preview.jpg" />
     <meta property="og:url" content="https://tajenbelabn.com" />
     <meta name="twitter:card" content="summary_large_image" />
-    <link rel="icon" type="image/png" href="pic/logo.png">
+
+    <link rel="icon" type="image/png" href="image/pic/logo.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="image/favicon.png">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
 
-    <link rel="icon" type="image/png" sizes="32x32" href="image/favicon.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="image/favicon.png">
+    <link href="style.css" rel="stylesheet">
 
-    <link rel="apple-touch-icon" sizes="180x180" href="image/favicon.png">
-
-    <link rel="icon" type="image/png" sizes="192x192" href="image/favicon.png">
-    <link rel="icon" type="image/png" sizes="512x512" href="image/favicon.png">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Restaurant",
+      "name": "طاجن بلبن",
+      "image": "https://tajenbelabn.com/image/pic/logo.png",
+      "description": "سلسلة محلات حلويات ورز بلبن في الشرقية",
+      "address": {
+        "@type": "PostalAddress",
+        "addressRegion": "Al Sharqia",
+        "addressCountry": "EG"
+      },
+      "url": "https://tajenbelabn.com",
+      "menu": "https://menu.tajenbelabn.com"
+    }
+    </script>
 </head> 
-    
+
 <body>
 
-    <h1 class="visually-hidden">طاجن بلبن</h1>
+    <div id="ambient-background"></div>
 
-    <div id="bubble-container"></div>
-
-    <header>
+    <header id="main-header">
         <nav class="container">
-            <div class="logo-section">
-                <img src="pic/logo.png" alt="شعار طاجن بلبن" class="logo-img animate-float">
+            <div class="logo-wrapper">
+                <a href="#">
+                    <img src="image/pic/logo.png" alt="شعار طاجن بلبن" class="brand-logo">
+                </a>
             </div>
 
-            <div class="nav-links">
-                <a href="#home">الرئيسية</a>
-                <a href="https://menu.tajenbelabn.com" target="_blank">المنيو</a>
-                <a href="#branches">الفروع</a>
-                <a href="https://www.tajenbelabn.com/jobs">انضم إلينا</a>
-                <a href="#contact">تواصل معنا</a>
+            <div class="nav-menu" id="nav-menu">
+                <a href="#home" class="nav-link active">الرئيسية</a>
+                <a href="#menu" class="nav-link">منتجاتنا</a>
+                <a href="#branches" class="nav-link">الفروع</a>
+                <a href="https://www.tajenbelabn.com/jobs" class="nav-link highlight">انضم لفريقنا</a>
+                <a href="#contact" class="nav-link">تواصل معنا</a>
             </div>
 
-            <button class="menu-btn" id="menu-btn">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                </svg>
+            <button class="mobile-toggle" aria-label="فتح القائمة">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
             </button>
         </nav>
-
-        <div class="mobile-nav" id="mobile-nav">
-            <a href="#home" onclick="closeMobileMenu()">الرئيسية</a>
-            <a href="https://menu.tajenbelabn.com" target="_blank">المنيو</a>
-            <a href="#branches" onclick="closeMobileMenu()">الفروع</a>
-            <a href="https://www.tajenbelabn.com/jobs">انضم إلينا</a>
-            <a href="#contact" onclick="closeMobileMenu()">تواصل معنا</a>
-        </div>
     </header>
 
-    <section id="home" class="hero">
-            <div class="carousel-slide active">
-                <img src="show/show-1.jpg">
-            </div>
-            <div class="carousel-slide">
-                <img src="show/show-2.jpg">
-            </div>
-            <div class="carousel-slide">
-                <img src="show/show-3.jpg">
-            </div>
-            <div class="carousel-overlay"></div>
+    <section id="home" class="hero-section">
+        <div class="hero-slider">
+            <div class="slide active" style="background-image: url('image/show/show-1.jpg');"></div>
+            <div class="slide" style="background-image: url('image/show/show-2.jpg');"></div>
+            <div class="slide" style="background-image: url('image/show/show-3.jpg');"></div>
+            <div class="overlay"></div>
         </div>
-        <div class="hero-text">
-            <h2 class="animate-slide-up">من خير الطبيعة 💙</h2>
+        
+        <div class="hero-content container">
+            <h1 class="hero-title reveal-text">طاجن بلبن.. من خيـر الطبيعـة <br> <span class="accent-color">لكوكب السعادة 💙</span></h1>
+            <p class="hero-subtitle reveal-text delay-1">الطعم الأصلي للرز بلبن والقشطوطة.. معمولة بحب.</p>
+            <div class="hero-actions reveal-text delay-2">
+                <a href="https://menu.tajenbelabn.com" target="_blank" class="btn btn-primary glow-effect">
+                    <span>شوف المنيو</span>
+                    <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5-5 5M5 12h13"></path></svg>
+                </a>
+                <a href="#branches" class="btn btn-outline">أقرب فرع ليك</a>
+            </div>
         </div>
-        <div class="hero-wave">
+
+        <div class="custom-shape-divider-bottom">
             <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
                 <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z" class="shape-fill"></path>
             </svg>
         </div>
     </section>
 
-    <section id="menu">
+    <section class="features-section">
+        <div class="container features-grid">
+            <div class="feature-card reveal-up">
+                <div class="icon-box">🥛</div>
+                <h3>حليب طبيعي 100%</h3>
+                <p>علشان نضمن لك أعلى جودة وأغنى طعم بدون أي إضافات صناعية.</p>
+            </div>
+            <div class="feature-card reveal-up delay-1">
+                <div class="icon-box">🔥</div>
+                <h3>طازج يومياً</h3>
+                <p>منتجاتنا يتم تحضيرها يومياً لضمان الطعم الفريش اللي يروق بالك.</p>
+            </div>
+            <div class="feature-card reveal-up delay-2">
+                <div class="icon-box">💙</div>
+                <h3>صُنع بحب</h3>
+                <p>كل منتج بيطلع من عندنا، بيتعمل باهتمام عشان يوصلك مظبوط.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="menu" class="menu-preview">
         <div class="container">
-            <h2 class="section-title">منيو السعادة</h2>
-            <div class="section-divider"></div>
-            <div class="menu-grid">
-                <div class="menu-text animate-slide-up">
-                    <h3>استكشف منتجاتنا</h3>
-                    <p>قائمتنا مليئة بالحلويات الفاخرة المصنوعة من خير الطبيعه تجربة لا تُنسى.</p>
+            <div class="section-header text-center">
+                <h2 class="section-title">منيو السعـادة</h2>
+                <div class="title-underline"></div>
+            </div>
+            
+            <div class="menu-showcase">
+                <div class="menu-info reveal-right">
+                    <h3>أطباق تخطف قلبك</h3>
+                    <p>من القشطوطة الغرقانة في الصوصات، للطواجن و الرز بلبن المخبوزة في الفرن.</p>
                     <a href="https://menu.tajenbelabn.com" target="_blank" class="btn btn-primary">
-                        عرض المنيو بالكامل
-                        <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5-5 5M5 12h13"></path></svg>
+                        استعرض المنيو الكامل
                     </a>
                 </div>
-                <div class="menu-image animate-slide-up">
-                    <div class="menu-image-wrapper">
-                        <img src="https://menu.tajenbelabn.com/images/banner/preview.jpg" alt="معاينة القائمة">
+                <div class="menu-visual reveal-left">
+                    <div class="image-frame">
+                        <img src="https://menu.tajenbelabn.com/images/banner/preview.jpg" alt="طاجن بلبن منيو" loading="lazy">
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="branches">
+    <section id="branches" class="branches-section">
         <div class="container">
-            <h2 class="section-title">فروعنا</h2>
-            <div class="section-divider"></div>
-            <div class="branches-grid" id="branches-grid">
+            <div class="section-header text-center">
+                <h2 class="section-title">فروعنـا في الشرقية</h2>
+                <p class="section-desc">دايماً قريبين منك.. اختار الفرع الأقرب</p>
+                <div class="title-underline"></div>
+            </div>
+
+            <div class="branches-grid">
+                <div class="branch-card glass-effect reveal-up">
+                    <div class="branch-img">
+                        <img src="branche/1.jpg" alt="فرع أبو كبير" loading="lazy">
+                        <span class="badge">أبو كبير</span>
+                    </div>
+                    <div class="branch-details">
+                        <h3>فرع أبو كبير</h3>
+                        <p class="address"><i class="fas fa-map-marker-alt"></i> مفارق متولي سعد - بجوار بنك مصر</p>
+                        <a href="https://maps.app.goo.gl/UaWBkYN2bknHHoAg8" target="_blank" class="btn-map">اللوكيشن 📍</a>
+                    </div>
+                </div>
+
+                <div class="branch-card glass-effect reveal-up delay-1">
+                    <div class="branch-img">
+                        <img src="branche/2.jpg" alt="فرع الزقازيق" loading="lazy">
+                        <span class="badge">الزقازيق</span>
+                    </div>
+                    <div class="branch-details">
+                        <h3>فرع الزقازيق</h3>
+                        <p class="address"><i class="fas fa-map-marker-alt"></i> القومية - بجوار مطعم طأطأ</p>
+                        <a href="https://maps.app.goo.gl/GmiNsoiRQt6GKPtXA" target="_blank" class="btn-map">اللوكيشن 📍</a>
+                    </div>
+                </div>
+
+                <div class="branch-card glass-effect reveal-up delay-2">
+                    <div class="branch-img">
+                        <img src="branche/3.jpg" alt="فرع ههيا" loading="lazy">
+                        <span class="badge">ههيا</span>
+                    </div>
+                    <div class="branch-details">
+                        <h3>فرع ههيا</h3>
+                        <p class="address"><i class="fas fa-map-marker-alt"></i> بجوار المحكمة</p>
+                        <a href="https://maps.app.goo.gl/dA7PMAGMvu6ZohhPA" target="_blank" class="btn-map">اللوكيشن 📍</a>
+                    </div>
+                </div>
+
+                <div class="branch-card glass-effect reveal-up">
+                    <div class="branch-img">
+                        <img src="branche/4.jpg" alt="فرع فاقوس" loading="lazy">
+                        <span class="badge">فاقوس</span>
+                    </div>
+                    <div class="branch-details">
+                        <h3>فرع فاقوس</h3>
+                        <p class="address"><i class="fas fa-map-marker-alt"></i> المنشية الجديدة - شارع أبو دهشان</p>
+                        <a href="https://maps.app.goo.gl/1FmWer1z6JBem8358" target="_blank" class="btn-map">اللوكيشن 📍</a>
+                    </div>
+                </div>
+
+                <div class="branch-card glass-effect reveal-up delay-1">
+                    <div class="branch-img">
+                        <img src="branche/5.jpg" alt="فرع كفر صقر" loading="lazy">
+                        <span class="badge">كفر صقر</span>
+                    </div>
+                    <div class="branch-details">
+                        <h3>فرع كفر صقر</h3>
+                        <p class="address"><i class="fas fa-map-marker-alt"></i> أمام مركز الشرطة</p>
+                        <a href="https://maps.app.goo.gl/cpq2zQadY1PbHt8R8" target="_blank" class="btn-map">اللوكيشن 📍</a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="contact">
+    <section class="hiring-banner">
         <div class="container">
-            <div class="container recruitment-section">
-                <h2 class="section-title">انضم لعائلتنا</h2>
-                <div class="section-divider"></div>
-            
-                <div class="jobs-card animate-slide-up">
-                    <div class="jobs-grid">
-                        
-                        <div class="jobs-text">
-                            <span class="hiring-badge">متاح التقديم الآن 🚀</span>
-                            <h3>انضم لفريق عمل طاجن بلبن</h3>
-                            <p>بيئة عمل احترافية، وروح شبابية. احنا مش بس بنقدم حلويات، احنا بنصنع سعادة. لو عندك الشغف، مكانك وسطنا.</p>
-                            
-                            <!-- <div class="jobs-features">
-                                <span><svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> رواتب مجزية</span>
-                                <span><svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> تدريب وتطوير</span>
-                            </div> -->
-            
-                            <a href="https://www.tajenbelabn.com/jobs" class="btn btn-primary btn-lg">
-                                انضم للفريق الآن
-                                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5-5 5M5 12h13"></path></svg>
-                            </a>
-                        </div>
-            
-                        <div class="jobs-image-container">
-                            <div class="jobs-image-wrapper">
-                                <img src="pic/jobs.jpg" alt="فريق عمل طاجن بلبن">
-                            </div>
-                            <div class="blob-bg"></div>
-                        </div>
-            
-                    </div>
+            <div class="hiring-content glass-effect">
+                <div class="text-part">
+                    <h3>عاوز تنضم لعيلة طاجن بلبن؟ 🚀</h3>
+                    <p>بيئة عمل احترافية، وروح شبابية. لو عندك الشغف، مكانك وسطنا.</p>
+                </div>
+                <div class="action-part">
+                    <a href="https://www.tajenbelabn.com/jobs" class="btn btn-white">قدم الآن</a>
                 </div>
             </div>
+        </div>
+    </section>
 
-            <div class="social-media-bar animate-slide-up">
-                <div class="social-media-text">
-                    <h3>تابعنا لتبقى على اطلاع</h3>
-                    <p>انضم لمجتمعنا على وسائل التواصل لتعرف آخر منتجاتنا وعروضنا أولاً بأول!</p>
-                </div>
-                <div class="social-links">
-                    <a href="https://www.facebook.com/share/1BhGdRbbCV/" target="_blank" class="social-btn" title="فيسبوك"><img src="media/facebook.png" alt="فيسبوك"></a>
-                    <a href="https://www.instagram.com/tagen.blaban" target="_blank" class="social-btn" title="إنستجرام"><img src="media/instagram.png" alt="إنستجرام"></a>
-                    <a href="https://www.tiktok.com/@tagen.blaban" target="_blank" class="social-btn" title="تيك توك"><img src="media/tik.png" alt="تيك توك"></a>
-                    <!-- <a href="mailto:tajenbelabn@gmail.com" class="social-btn" title="البريد الإلكتروني"><img src="media/gmail.png" alt="البريد الإلكتروني"></a> -->
-                </div>
+    <section id="contact" class="social-section">
+        <div class="container text-center">
+            <h2 class="section-title">خليك قريب</h2>
+            <p>تابعنا على السوشيال ميديا عشان تعرف أحدث العروض</p>
+            
+            <div class="social-icons-wrapper">
+                <a href="https://www.facebook.com/share/1BhGdRbbCV/" target="_blank" class="social-icon fb" title="فيسبوك">
+                    <img src="image/media/facebook.png" alt="Facebook">
+                </a>
+                <a href="https://www.instagram.com/tagen.blaban" target="_blank" class="social-icon insta" title="إنستجرام">
+                    <img src="image/media/instagram.png" alt="Instagram">
+                </a>
+                <a href="https://www.tiktok.com/@tagen.blaban" target="_blank" class="social-icon tiktok" title="تيك توك">
+                    <img src="image/media/tik.png" alt="TikTok">
+                </a>
             </div>
         </div>
     </section>
 
     <footer>
-        <div class="footer-content container">
-            <p class="made-by">
-                Made with ❤️ by 
-                <a href="https://hmody-site.netlify.app/" target="_blank" rel="noopener noreferrer" class="creator-name">Hmody Code</a>
-            </p>
-
-            <p class="copyright">
-                © 2025 Tajen Belabn. All Rights Reserved.
-            </p>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-info">
+                    <img src="image/pic/logo.png" alt="Logo" class="footer-logo">
+                    <p>صناع السعادة في الشرقية. طعم يرجعك لأصل الحلويات.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>روابط سريعة</h4>
+                    <ul>
+                        <li><a href="#home">الرئيسية</a></li>
+                        <li><a href="https://menu.tajenbelabn.com">المنيو</a></li>
+                        <li><a href="https://www.tajenbelabn.com/jobs">التوظيف</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 Tajen Belabn. All Rights Reserved.</p>
+                <p class="credit">Designed with ❤️ by <a href="https://hmody-site.netlify.app/" target="_blank">Hmody Code</a></p>
+            </div>
         </div>
     </footer>
 
-    <div class="fab-container">
-        <button class="fab" id="complaints-toggle-fab" aria-label="فتح قائمة الشكاوي">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-                <path fill="currentColor" d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7 .9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
+    <div class="fab-wrapper">
+        <div class="fab-tooltip" id="fab-tooltip">للشكاوي والاقتراحات</div>
+        <button class="fab-btn" id="fab-trigger" aria-label="تواصل معنا">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="24" height="24">
+                <path fill="currentColor" d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"/>
             </svg>
         </button>
-        <div class="fab-dropdown" id="complaints-dropdown-fab">
-            <h3>للشكاوي والاقتراحات</h3>
-            <a href="https://wa.me/201025741199" target="_blank" class="btn btn-green">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 448 512" style="margin-left: 8px;"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7 .9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
-                م/محمد ابراهيم
+        <div class="fab-menu" id="fab-menu">
+            <a href="https://wa.me/201025741199" target="_blank" class="fab-item whatsapp">
+                <span>تواصل مع الإدارة</span>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="Whatsapp" width="24">
             </a>
         </div>
     </div>
